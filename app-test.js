@@ -1,7 +1,7 @@
 
 
 function getMovieData(movie) {
-    var queryURL = "http://api-public.guidebox.com/v2/search?api_key=784a0a8429f1789c7473e19007cce274f76df272&type=movie&field=title&query=" + movie;
+    var queryURL = "https://api-public.guidebox.com/v2/search?api_key=784a0a8429f1789c7473e19007cce274f76df272&type=movie&field=title&query=" + movie;
 
     $.ajax({
         url: queryURL,
