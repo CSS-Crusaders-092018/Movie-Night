@@ -49,37 +49,53 @@
       <div class="probootstrap-image" style="background-image: url(img/image_3.jpg)"></div>
       <div class="probootstrap-text">
         <div class="probootstrap-inner probootstrap-animate">
-            <br><br> <br><br> <br><br>
-          <h1 class="heading">Login Page </h1>
+          <br><br> <br><br> <br><br>
+          <h1 class="heading">Sign In Page </h1>
           <p>
-             
+
             USER has an account: <br> <br>if user logs in successfully, take them to the "Event" creation Page <br><br>
             <div>
-              <!-- this is temp.  replace with jQuery.  Isaac -->
-                <label>Username:  </label><span><input type="text" name="username"></span>
-                <br><br>
-                <label>Password: </label><span><input type="password" name="pwd1"></span>
-                <br><br>
+              <form>
+                <div class="form-group">
+                  <label for="signInEmail">Email address</label>
+                  <input type="email" class="form-control" id="SignInEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword">Password</label>
+                  <input type="password" class="form-control" id="inputPassword" placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+              </form>
             </div>
             If user does not log in successfully, show a message letting them know the credentials are incorrect
             <br> <br>
 
             USER does NOT have an account: <br> <br>
             This section will allow the user to create an account<br> <br>
-            
+
           </p>
 
 
           <div>
-             <!-- this is temp.  replace with jQuery.  Isaac -->
-              <label>Username:  </label><span><input type="text" name="username"></span>
-              <br><br>
-              <label>Password: </label><span><input type="password" name="pwd1"></span>
-              <br><br>
-              <label>Confirm Password</label><span><input type="password" name="pwd2"></span>
-              <br><br>
-              <button type="button" class="btn btn-primary">Submit</button>
+            <form>
+              <div class="form-group">
+                <label for="NewLoginEmail1">Email address</label>
+                <input type="email" class="form-control" id="NewLoginEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We will not share your email with anyone.</small>
+              </div>
+              <div class="form-group">
+                <label for="NewInputPassword1">Password</label>
+                <input type="password" class="form-control" id="NewInputPassword1" placeholder="Enter Password">
+                <br>
+                <input type="password" class="form-control" id="NewInputPassword2" placeholder="Re-Enter Password">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit New Account</button>
+            </form>
           </div>
+
+
+
+
 
         </div>
       </div>
