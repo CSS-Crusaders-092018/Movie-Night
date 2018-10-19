@@ -49,11 +49,18 @@
       <div class="probootstrap-image" style="background-image: url(img/image_3.jpg)"></div>
       <div class="probootstrap-text">
         <div class="probootstrap-inner probootstrap-animate">
+            <br><br> <br><br> <br><br>
           <h1 class="heading">Login Page </h1>
           <p>
-
+             
             USER has an account: <br> <br>if user logs in successfully, take them to the "Event" creation Page <br><br>
-
+            <div>
+              <!-- this is temp.  replace with jQuery.  Isaac -->
+                <label>Username:  </label><span><input type="text" name="username"></span>
+                <br><br>
+                <label>Password: </label><span><input type="password" name="pwd1"></span>
+                <br><br>
+            </div>
             If user does not log in successfully, show a message letting them know the credentials are incorrect
             <br> <br>
 
@@ -64,13 +71,14 @@
 
 
           <div>
+             <!-- this is temp.  replace with jQuery.  Isaac -->
               <label>Username:  </label><span><input type="text" name="username"></span>
               <br><br>
               <label>Password: </label><span><input type="password" name="pwd1"></span>
               <br><br>
               <label>Confirm Password</label><span><input type="password" name="pwd2"></span>
               <br><br>
-              <span><input type="submit"></span>
+              <button type="button" class="btn btn-primary">Submit</button>
           </div>
 
         </div>
