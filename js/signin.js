@@ -24,7 +24,7 @@ $(document).ready(function() {
           var isAnonymous = user.isAnonymous;
           var uid = user.uid;
           var providerData = user.providerData;
-          window.location = "success.html"; //After successful login, user will be redirected to success.html
+          window.location = "event-page-test.html"; //After successful login, user will be redirected to success.html
         } else {
           // User is signed out.
           console.log("signed out");
