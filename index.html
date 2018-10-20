@@ -38,7 +38,7 @@
 
   <!-- START: header -->
 
-  <div class="probootstrap-loader"></div>
+  <!-- <div class="probootstrap-loader"></div> -->
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
@@ -49,7 +49,7 @@
 
       <nav role="navigation" class="probootstrap-nav hidden-xs">
         <ul class="probootstrap-main-nav">
-            <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="index.html">Home</a></li>
           <li><a href="event.html">Event</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
@@ -74,71 +74,75 @@
       <h1 class="display-2">Movie Night</h1>
     </div>
   </div> -->
-  <div class="probootstrap-main">
-    <section class="probootstrap-section-half probootstrap-no-hover">
-      <img src="img/Avatar.jpg" name="slide" width="400" height="450">
-      <script type="text/javascript">
-        var step = 1
-        function slideit() {
-          document.images.slide.src = eval("image" + step + ".src")
-          if (step < 4)
-            step++
-          else
-            step = 1
-          setTimeout("slideit()", 2000)
-        }
-        slideit()
-      </script>
-    </section>
 
-    <!-- <section class="probootstrap-section-half probootstrap-no-hover"> -->
-    <!-- <div class="probootstrap-image">
+  <body>
+    <div id="container">
+
+      <div class="probootstrap-main">
+        <section class="probootstrap-section-half probootstrap-no-hover">
+          <img src="img/Avatar.jpg" name="slide" width="400" height="450">
+          <script type="text/javascript">
+            var step = 1
+            function slideit() {
+              document.images.slide.src = eval("image" + step + ".src")
+              if (step < 4)
+                step++
+              else
+                step = 1
+              setTimeout("slideit()", 2000)
+            }
+            slideit()
+          </script>
+        </section>
+
+        <!-- <section class="probootstrap-section-half probootstrap-no-hover"> -->
+        <!-- <div class="probootstrap-image">
       <img src="img/Avatar.jpg" style="width:250px;height:275x;">
       <img src="img/tomhank.jpg" style="width:250px;height:275x;">
       <img src="img/Jurassic.jpg" style="width:250px;height:275x;">
       <img src="img/frozen.jpg" style="width:250px;height:275x;">
       </div>
     </section>  -->
-    <div>
-      <h1>Sign In</h1>
-      <form>
-        <div class="form-group">
-          <label for="signUpEmail">Email address</label>
-          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email">
+        <div>
+
+          <h1>Sign In</h1>
+          <form>
+            <div class="form-group">
+              <label for="signUpEmail">Email address</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn btn-primary" id="signin">Sign In</button>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter your password">
-        </div>
-        <button type="submit" class="btn btn-primary" id="signin">Sign In</button>
-      </form>
-    </div>
-    <div>
-        <h1>Sign Up</h1>
-      <form>
-        <div class="form-group">
-          <label for="NewLoginEmail1">Email address</label>
-          <input type="email" class="form-control" id="newEmail" aria-describedby="emailHelp" placeholder="Enter a valid email">
-          <small id="emailHelp" class="form-text text-muted">We will not share your email with anyone.</small>
-        </div>
-        <div class="form-group">
-          <label for="NewInputPassword">Password</label>
-          <input type="password" class="form-control" id="newPassword" placeholder="Enter a password">
-          <!--Unneeded form field to reenter password-->
-          <!--<br>
+        <div>
+          <h1>Sign Up</h1>
+          <form>
+            <div class="form-group">
+              <label for="NewLoginEmail1">Email address</label>
+              <input type="email" class="form-control" id="newEmail" aria-describedby="emailHelp" placeholder="Enter a valid email">
+              <small id="emailHelp" class="form-text text-muted">We will not share your email with anyone.</small>
+            </div>
+            <div class="form-group">
+              <label for="NewInputPassword">Password</label>
+              <input type="password" class="form-control" id="newPassword" placeholder="Enter a password">
+              <!--Unneeded form field to reenter password-->
+              <!--<br>
           <input type="password" class="form-control" id="NewInputPassword2" placeholder="Re-Enter Password">-->
+            </div>
+            <button type="submit" class="btn btn-primary" id="signup">Sign Up</button>
+          </form>
         </div>
-        <button type="submit" class="btn btn-primary" id="signup">Sign Up</button>
-      </form>
-    </div>
 
-    <!-- </form> -->
-  </div>
+        <!-- </form> -->
 
-  <!-- END section -->
+        <!-- END section -->
 
 
-  <section class="probootstrap-section">
+        <!-- <section class="probootstrap-section">
     <div class="container">
       <div class="row mb70 probootstrap-animate" data-animate-effect="fadeIn">
         <div class="col-md-6">
@@ -228,33 +232,34 @@
       </div>
 
     </div>
-  </section>
-  <!-- END section -->
-  </div>
-
-  <footer class="probootstrap-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-            <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason
-              Moore <br> Joyce Nguyen, Isaac Bayon</p>
-        </div>
+  </section> -->
+        <!-- END section -->
       </div>
-    </div>
-  </footer>
+
+      <footer class="probootstrap-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk,
+                Jason
+                Moore <br> Joyce Nguyen, Isaac Bayon</p>
+            </div>
+          </div>
+        </div>
+      </footer>
 
 
-  <div class="gototop js-top">
-    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
-  </div>
+      <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+      </div>
 
 
-  <script src="js/scripts.min.js"></script>
-  <script src="js/main.min.js"></script>
-  <script src="js/custom.js"></script>
-  <script src="js/signin.js"></script>
-  
+      <script src="js/scripts.min.js"></script>
+      <script src="js/main.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script src="js/signin.js"></script>
 
-</body>
+
+  </body>
 
 </html>
