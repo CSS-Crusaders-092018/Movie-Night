@@ -11,6 +11,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+//Test Info
 var testEvent = {
     guests: [{
         name: "Jason",
@@ -40,45 +41,51 @@ var testEvent = {
     suggestionList: [
         {
             title: "The Shining",
-            poster: "https://www.imdb.com/title/tt0105941/mediaviewer/rm2930059264",
+            poster: "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
             year: 1980,
             plot: "Jack Nicholson goes hard on his fam.",
             votes: 0
-        },{
+        }, {
             title: "Jurassic Park",
-            poster: "https://www.imdb.com/title/tt0105941/mediaviewer/rm2930059264",
+            poster: "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_.jpg",
             year: 1993,
             plot: "DINO DNA!",
             votes: 0
-        },{
+        }, {
             title: "Avatar",
-            poster: "https://www.imdb.com/title/tt0105941/mediaviewer/rm2930059264",
-            year: 2007,
+            poster: "https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_.jpg",
+            year: 2009,
             plot: "Only the highest grossing movie of all time!",
             votes: 0
         }
     ]
 }
 
+database.ref("/test-event").set(testEvent);
+var thisEvent = undefined;
+
+database.ref("/test-event").on("value", function (snapshot) {
+    thisEvent = snapshot.val();
+})
+//End Test Info
+///////////////////////////////////////////////////
+
 //On Page Load
 function pageLoad() {
-    database.ref("/test-event/").push(testEvent);
+    $("#event-name").text(thisEvent.eventName);
+    $("#event-date").text(thisEvent.eventDate);
 
-    $("#event-name").text(testEvent.eventName);
-    $("#event-date").text(testEvent.eventDate);
-
-    for (var i = 0; i < testEvent.suggestionList.length; i++){
-        var newTitle = testEvent.suggestionList[i].title;
+    for (var i = 0; i < thisEvent.suggestionList.length; i++) {
+        var newTitle = thisEvent.suggestionList[i].title;
         var newItem = $("<div>").addClass("suggestion-container").attr("data-item", i).attr("data-hidden", "true");
-        
+
         var newTitleCard = $("<h3>").addClass("list-title").text(newTitle);
 
         var newDropDown = $("<div>").addClass("suggestion-info movie-" + i).attr("data-title", newTitle).attr("data-item", i);
-        var newPoster = $("<img>").attr("src", testEvent.suggestionList[i].poster);
+        var newPoster = $("<img>").attr("src", thisEvent.suggestionList[i].poster).addClass("poster-img");
         newDropDown.append(newPoster);
-        newDropDown.append("<p>" + testEvent.suggestionList[i].year);
-        newDropDown.append("<p>" + testEvent.suggestionList[i].plot);
-        
+        newDropDown.append("<p>" + thisEvent.suggestionList[i].year);
+        newDropDown.append("<p>" + thisEvent.suggestionList[i].plot);
 
         newItem.append(newTitleCard, newDropDown);
         newDropDown.hide();
@@ -121,16 +128,16 @@ $(document).on("click", ".search-result", function () {
     $("#movie-display").empty();
 })
 
+//Display Movie Info on.Click
 $(document).on("click", ".suggestion-container", function () {
     var whichMovie = $(this).attr("data-item");
-    if ($(this).attr("data-hidden") === "true"){
-    $(".movie-" + whichMovie).show();
-    $(this).attr("data-hidden", "false");
+    if ($(this).attr("data-hidden") === "true") {
+        $(".movie-" + whichMovie).show();
+        $(this).attr("data-hidden", "false");
     } else {
         $(".movie-" + whichMovie).hide();
         $(this).attr("data-hidden", "true");
     }
-
 })
 
 
