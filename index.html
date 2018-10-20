@@ -18,17 +18,17 @@
       <script src="js/vendor/html5shiv.min.js"></script>
       <script src="js/vendor/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript">
-    var image1=new Image()
-    image1.src="img/Avatar.jpg"
-    var image2=new Image()
-    image2.src="img/tomhank.jpg"
-    var image3=new Image()
-    image3.src="img/Jurassic.jpg"
-    var image4=new Image()
-    image4.src="img/frozen.jpg"
+  <script type="text/javascript">
+    var image1 = new Image()
+    image1.src = "img/Avatar.jpg"
+    var image2 = new Image()
+    image2.src = "img/tomhank.jpg"
+    var image3 = new Image()
+    image3.src = "img/Jurassic.jpg"
+    var image4 = new Image()
+    image4.src = "img/frozen.jpg"
 
-    </script>
+  </script>
 </head>
 
 <body>
@@ -45,13 +45,12 @@
       <div class="mobile-menu-overlay"></div>
 
       <nav role="navigation" class="probootstrap-nav hidden-xs">
-          <ul class="probootstrap-main-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="event.html">Event</a></li>
-            <li class="active"><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-      <!-- <div class="extra-text visible-xs"> 
+        <ul class="probootstrap-main-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="event.html">Event</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <!-- <div class="extra-text visible-xs"> 
             <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
             <h5>Address</h5>
             <p>198 West 21th Street, Suite 721 New York NY 10016</p>
@@ -62,7 +61,7 @@
               <li><a href="#"><i class="icon-instagram2"></i></a></li>
             </ul>
           </div> -->
-      <!-- </nav> -->
+        <!-- </nav> -->
     </div>
   </header>
   <!-- END: header -->
@@ -72,62 +71,64 @@
       <h1 class="display-2">Movie Night</h1>
     </div>
   </div> -->
-   <div class="probootstrap-main">
-      <section class="probootstrap-section-half probootstrap-no-hover">
-<img src="img/Avatar.jpg" name="slide" width="400" height="450">
-<script type="text/javascript">
-var step=1
-function slideit(){
-  document.images.slide.src=eval("image"+step+".src")
-if(step<4)
-step++
-else
-step=1
-setTimeout("slideit()", 2000)
-}
-slideit()
-</script>
-</section>
+  <div class="probootstrap-main">
+    <section class="probootstrap-section-half probootstrap-no-hover">
+      <img src="img/Avatar.jpg" name="slide" width="400" height="450">
+      <script type="text/javascript">
+        var step = 1
+        function slideit() {
+          document.images.slide.src = eval("image" + step + ".src")
+          if (step < 4)
+            step++
+          else
+            step = 1
+          setTimeout("slideit()", 2000)
+        }
+        slideit()
+      </script>
+    </section>
 
-      <!-- <section class="probootstrap-section-half probootstrap-no-hover"> -->
-      <!-- <div class="probootstrap-image">
+    <!-- <section class="probootstrap-section-half probootstrap-no-hover"> -->
+    <!-- <div class="probootstrap-image">
       <img src="img/Avatar.jpg" style="width:250px;height:275x;">
       <img src="img/tomhank.jpg" style="width:250px;height:275x;">
       <img src="img/Jurassic.jpg" style="width:250px;height:275x;">
       <img src="img/frozen.jpg" style="width:250px;height:275x;">
       </div>
-    </section>  --> 
-
-      
+    </section>  -->
+    <div>
+      <h1>Sign In</h1>
+      <form>
         <div class="form-group">
-          <h3>Log in</h3>
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" placeholder=" ">
-
+          <label for="signUpEmail">Email address</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder=" ">
+          <label for="inputPassword">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password">
         </div>
-        <h2>OR</h2>
-        <h3>Sign up</h3>
-        <form>
-          <div class="form-group">
-            <label for="exampleInputName">Your Name</label>
-            <input type="name" class="form-control" id="exampleInputName" placeholder=" ">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder=" ">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder=" ">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-
+        <button type="submit" class="btn btn-primary">Sign In</button>
       </form>
+    </div>
+    <div>
+        <h1>Sign Up</h1>
+      <form>
+        <div class="form-group">
+          <label for="NewLoginEmail1">Email address</label>
+          <input type="email" class="form-control" id="newEmail" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We will not share your email with anyone.</small>
+        </div>
+        <div class="form-group">
+          <label for="NewInputPassword">Password</label>
+          <input type="password" class="form-control" id="newPassword" placeholder="Enter Password">
+          <br>
+          <input type="password" class="form-control" id="NewInputPassword2" placeholder="Re-Enter Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+    </div>
+
+    <!-- </form> -->
   </div>
 
   <!-- END section -->
@@ -231,8 +232,8 @@ slideit()
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <p>&copy; 2017 <a href="https://uicookies.com/">uiCookies:Connect</a>. All Rights Reserved. <br> Designed
-            &amp; Developed by <a href="https://uicookies.com">uiCookies</a> Demo Images <a href="https://unsplash.com/">Unsplash</a></p>
+            <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason
+              Moore <br> Joyce Nguyen, Isaac Bayon</p>
         </div>
       </div>
     </div>
