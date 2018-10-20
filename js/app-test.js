@@ -1,78 +1,36 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyB4XNFf1YPpcDiJ9OYbJmWrOvDstL6d-IE",
-    authDomain: "clickbuttoncounter-f9383.firebaseapp.com",
-    databaseURL: "https://clickbuttoncounter-f9383.firebaseio.com",
-    projectId: "clickbuttoncounter-f9383",
-    storageBucket: "clickbuttoncounter-f9383.appspot.com",
-    messagingSenderId: "684445680723"
-};
-firebase.initializeApp(config);
+    apiKey: "AIzaSyB3ognBnBLe-vgaHhsZV7ksufHgzg21VFs",
+    authDomain: "movie-night-464be.firebaseapp.com",
+    databaseURL: "https://movie-night-464be.firebaseio.com",
+    projectId: "movie-night-464be",
+    storageBucket: "movie-night-464be.appspot.com",
+    messagingSenderId: "123201978661"
+  };
+  firebase.initializeApp(config);
 
 var database = firebase.database();
-
-//Test Info
-// var testEvent = {
-//     guests: [{
-//         name: "Jason",
-//         suggestions: ["empty"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }, {
-//         name: "Joyce",
-//         suggestions: ["empty", "Avatar", "Titanic", "Terminator 2"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }, {
-//         name: "Isaac",
-//         suggestions: ["empty", "ET", "Hook", "Jurassic Park"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }, {
-//         name: "Elizabeth",
-//         suggestions: ["empty", "The Shining", "Spartacus", "Full Metal Jacket"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }
-//     ],
-//     suggestionCap: 4,
-//     eventDate: "Same time, same place",
-//     eventName: "Demo Event",
-//     suggestionList: [
-//         "empty",
-//         {
-//             title: "The Shining",
-//             poster: "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
-//             year: 1980,
-//             plot: "Jack Nicholson goes hard on his fam.",
-//             votes: 0
-//         }, {
-//             title: "Jurassic Park",
-//             poster: "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_.jpg",
-//             year: 1993,
-//             plot: "DINO DNA!",
-//             votes: 0
-//         }, {
-//             title: "Avatar",
-//             poster: "https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_.jpg",
-//             year: 2009,
-//             plot: "Only the highest grossing movie of all time!",
-//             votes: 0
-//         }
-//     ]
-// }
-
-// database.ref("/test-event").set(testEvent);
+var eventList = database.ref("/events").push();
+console.log(eventList);
 
 var thisEvent = undefined;
+var eventKey = undefined;
 
-database.ref("/test-event").on("value", function (snapshot) {
+database.ref("/events").on("child_added", function (snapshot) {
     thisEvent = snapshot.val();
-    console.log(thisEvent.guests[0]);
+    eventKey = snapshot.key;
+    console.log(eventKey);
+    console.log(thisEvent);
     pageLoad();
 })
-//End Test Info
-///////////////////////////////////////////////////
+
+database.ref("/events").on("child_changed", function (snapshot) {
+    thisEvent = snapshot.val();
+    eventKey = snapshot.key;
+    console.log(eventKey);
+    console.log(thisEvent);
+    pageLoad();
+})
 
 //On Page Load
 function pageLoad() {
@@ -140,14 +98,13 @@ $(document).on("click", ".search-result", function () {
         }
         thisEvent.guests[0].suggestions.push(newMovie);
         thisEvent.suggestionList.push(newSuggestion);
-        database.ref("/test-event").set(thisEvent);
+        database.ref("/events/"+ eventKey).set(thisEvent);
         
     } else {
         alert("You've entered enough, haven't you?"); //DELETE THIS SHIT NO ALERTS JUST TESTING KTHNX
     }
 
     }) //end AJAX 
-
     $("#movie-display").empty();
 })
 
@@ -164,3 +121,55 @@ $(document).on("click", ".suggestion-container", function () {
 })
 
 
+// // Test Info
+// var testEvent = {
+//     guests: [{
+//         name: "Jason",
+//         suggestions: ["empty"],
+//         upVotesRemaining: 3,
+//         downVotesRemaining: 3
+//     }, {
+//         name: "Joyce",
+//         suggestions: ["empty", "Avatar", "Titanic", "Terminator 2"],
+//         upVotesRemaining: 3,
+//         downVotesRemaining: 3
+//     }, {
+//         name: "Isaac",
+//         suggestions: ["empty", "ET", "Hook", "Jurassic Park"],
+//         upVotesRemaining: 3,
+//         downVotesRemaining: 3
+//     }, {
+//         name: "Elizabeth",
+//         suggestions: ["empty", "The Shining", "Spartacus", "Full Metal Jacket"],
+//         upVotesRemaining: 3,
+//         downVotesRemaining: 3
+//     }
+//     ],
+//     suggestionCap: 4,
+//     eventDate: "Same time, same place",
+//     eventName: "Demo Event",
+//     suggestionList: [
+//         "empty",
+//         {
+//             title: "The Shining",
+//             poster: "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
+//             year: 1980,
+//             plot: "Jack Nicholson goes hard on his fam.",
+//             votes: 0
+//         }, {
+//             title: "Jurassic Park",
+//             poster: "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_.jpg",
+//             year: 1993,
+//             plot: "DINO DNA!",
+//             votes: 0
+//         }, {
+//             title: "Avatar",
+//             poster: "https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_.jpg",
+//             year: 2009,
+//             plot: "Only the highest grossing movie of all time!",
+//             votes: 0
+//         }
+//     ]
+// }
+
+// database.ref("/events").push(testEvent);
