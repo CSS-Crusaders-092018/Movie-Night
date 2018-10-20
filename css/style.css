@@ -6,6 +6,16 @@
  * Author URL: https://probootstrap.com
  * License: Released for free under the Creative Commons Attribution 3.0 license (probootstrap.com/license)
  */
+
+ #container {
+   margin-left: 50px;
+   margin-right: 50px;
+
+ }
+
+ .form-group {
+   padding-left: 15px;
+ }
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?1z9v6x");
@@ -822,13 +832,13 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
 }
 
 /* This block of CSS adds opacity transition to background */
-.mfp-with-zoom .mfp-container,
+/* .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
   opacity: 0;
   -webkit-backface-visibility: hidden;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-}
+} */
 
 .mfp-with-zoom.mfp-ready .mfp-container {
   opacity: 1;
@@ -1091,4 +1101,10 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
   text-decoration: none;
   outline: none;
   background: rgba(0, 0, 0, 0.9);
+}
+
+.form-group {
+  margin-left: 25px;
+  margin-right: 25px;
+  float: right;
 }
