@@ -18,6 +18,17 @@
       <script src="js/vendor/html5shiv.min.js"></script>
       <script src="js/vendor/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+    var image1=new Image()
+    image1.src="img/Avatar.jpg"
+    var image2=new Image()
+    image2.src="img/tomhank.jpg"
+    var image3=new Image()
+    image3.src="img/Jurassic.jpg"
+    var image4=new Image()
+    image4.src="img/frozen.jpg"
+
+    </script>
 </head>
 
 <body>
@@ -61,11 +72,33 @@
       <h1 class="display-2">Movie Night</h1>
     </div>
   </div> -->
-  <div class="probootstrap-main">
+   <div class="probootstrap-main">
+      <section class="probootstrap-section-half probootstrap-no-hover">
+<img src="img/Avatar.jpg" name="slide" width="400" height="450">
+<script type="text/javascript">
+var step=1
+function slideit(){
+  document.images.slide.src=eval("image"+step+".src")
+if(step<4)
+step++
+else
+step=1
+setTimeout("slideit()", 2000)
+}
+slideit()
+</script>
+</section>
 
-    <section class="probootstrap-section-half probootstrap-no-hover">
-      <div class="probootstrap-image" style="background-image: url(img/tomhank.jpg)"></div>
-      <form>
+      <!-- <section class="probootstrap-section-half probootstrap-no-hover"> -->
+      <!-- <div class="probootstrap-image">
+      <img src="img/Avatar.jpg" style="width:250px;height:275x;">
+      <img src="img/tomhank.jpg" style="width:250px;height:275x;">
+      <img src="img/Jurassic.jpg" style="width:250px;height:275x;">
+      <img src="img/frozen.jpg" style="width:250px;height:275x;">
+      </div>
+    </section>  --> 
+
+      
         <div class="form-group">
           <h3>Log in</h3>
           <label for="exampleInputEmail1">Email address</label>
