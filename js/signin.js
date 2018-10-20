@@ -16,7 +16,6 @@ $(document).ready(function () {
   //Handle Account Status
   (function initApp() {
     firebase.auth().onAuthStateChanged(function (user) {
-      console.log(user);
       if (user) {
         //User is signed in.
         var displayName = user.displayName;
@@ -25,12 +24,13 @@ $(document).ready(function () {
         var photoURL = user.photoURL;
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
-        var providerData = user.providerData;
+        var providerData = user.providerData;    
 
-        database.ref('users/' + user.uid).set({
+        database.ref('users/' + uid).update({
           username: name,
           email: email
         });
+
         window.location = "event-page-test.html"; //After successful login, user will be redirected to success.html
       } else {
         // User is signed out.
@@ -50,7 +50,6 @@ $(document).ready(function () {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(function (param) {
-        console.log(param);
         console.log("success");
       })
       .catch(function (error) {
