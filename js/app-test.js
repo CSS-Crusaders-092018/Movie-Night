@@ -40,9 +40,14 @@ function pageLoad() {
 
     for (var i = 1; i < thisEvent.suggestionList.length; i++) {
         var newTitle = thisEvent.suggestionList[i].title;
-        var newItem = $("<div>").addClass("suggestion-container").attr("data-item", i).attr("data-hidden", "true");
+        var newItem = $("<div>").addClass("suggestion-container");
 
-        var newTitleCard = $("<h3>").addClass("list-title").text(newTitle);
+        var newTitleCard = $("<div>").addClass("list-item");
+        var titleTitle = $("<h3>").addClass("list-title").attr("data-item", i).attr("data-hidden", "true").text(newTitle);
+        newTitleCard.append(titleTitle);
+        var upVoteButton = $("<button>").addClass("upvote").attr("data-item", i).text("+");
+        var downVoteButton = $("<button>").addClass("downvote").attr("data-item", i).text("-");
+        newTitleCard.append(upVoteButton, downVoteButton);
 
         var newDropDown = $("<div>").addClass("suggestion-info movie-" + i).attr("data-title", newTitle).attr("data-item", i);
         var newPoster = $("<img>").attr("src", thisEvent.suggestionList[i].poster).addClass("poster-img");
@@ -78,6 +83,7 @@ $("#suggestion-submit").on("click", function (event) {
     getMovieData(title);
 })
 
+//Adding a movie to the list
 $(document).on("click", ".search-result", function () {
     var newMovie = $(this).attr("data-title");
     var newId = $(this).attr("data-id");
@@ -109,7 +115,7 @@ $(document).on("click", ".search-result", function () {
 })
 
 //Display Movie Info on.Click
-$(document).on("click", ".suggestion-container", function () {
+$(document).on("click", ".list-title", function () {
     var whichMovie = $(this).attr("data-item");
     if ($(this).attr("data-hidden") === "true") {
         $(".movie-" + whichMovie).show();
@@ -119,6 +125,31 @@ $(document).on("click", ".suggestion-container", function () {
         $(this).attr("data-hidden", "true");
     }
 })
+
+//Vote Buttons
+$(document).on("click", ".upvote", function () {
+    if (thisEvent.guests[0].upVotesRemaining > 0) {
+    
+    var whichMovie = $(this).attr("data-item");
+    thisEvent.suggestionList[whichMovie].votes++;
+    thisEvent.guests[0].upVotesRemaining--;
+    database.ref("/events/"+ eventKey).set(thisEvent);
+    } else {
+        alert("You're out of UpVotes"); //DELETE THIS NO ALERTS
+    }
+}) //end UpVoteButton
+
+$(document).on("click", ".downvote", function () {
+    if (thisEvent.guests[0].downVotesRemaining > 0) {
+    
+    var whichMovie = $(this).attr("data-item");
+    thisEvent.suggestionList[whichMovie].votes--;
+    thisEvent.guests[0].downVotesRemaining--;
+    database.ref("/events/"+ eventKey).set(thisEvent);
+    } else {
+        alert("You're out of Down Votes"); //DELETE THIS NO ALERTS
+    }
+}) //end DownVoteButton
 
 
 // // Test Info
