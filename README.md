@@ -8,12 +8,12 @@ Invite your friends to your movie event and designate how many suggestions every
 ## Technology Used
 
 ### Guidebox API
-Movie data: poster, overview, release year, streamable services.
+Gets a movie's streamable services.
 - https://www.guidebox.com/
 
-### ??? API
-It's gonna do stuff.
-- from a place
+### OMDB API
+Get's movie data: poster, plot, year, rating.
+- http://www.omdbapi.com/
 
 ### Firebase
 Realtime Database and Authentication Services (new library)

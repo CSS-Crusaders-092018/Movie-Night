@@ -1,3 +1,5 @@
+
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyB3ognBnBLe-vgaHhsZV7ksufHgzg21VFs",
@@ -11,7 +13,8 @@ var config = {
 
 var database = firebase.database();
 var eventList = database.ref("/events").push();
-console.log(eventList);
+// var user = firebase.auth().currentUser;
+// console.log(user);
 
 var thisEvent = undefined;
 var eventKey = undefined;
@@ -19,8 +22,6 @@ var eventKey = undefined;
 database.ref("/events").on("child_added", function (snapshot) {
     thisEvent = snapshot.val();
     eventKey = snapshot.key;
-    console.log(eventKey);
-    console.log(thisEvent);
     pageLoad();
 })
 
@@ -70,7 +71,7 @@ function getMovieData(movie) {
         method: "GET"
     }).then(function (response) {
         for (var i = 0; i < response.results.length; i++) {
-            var newMovie = $("<p>").addClass("search-result").attr("data-id", response.results[i].id).attr("data-title", response.results[i].title).text(response.results[i].title + ", " + response.results[i].release_year);
+            var newMovie = $("<p>").addClass("search-result").attr("data-id", response.results[i].imdb).attr("data-title", response.results[i].title).text(response.results[i].title + ", " + response.results[i].release_year);
             $("#movie-display").append(newMovie);
         }
     }) //end AJAX 
@@ -88,18 +89,18 @@ $(document).on("click", ".search-result", function () {
     var newMovie = $(this).attr("data-title");
     var newId = $(this).attr("data-id");
 
-    var newQuery = "http://api-public.guidebox.com/v2/movies/" + newId + "?api_key=784a0a8429f1789c7473e19007cce274f76df272"
+    var newQuery = "https://www.omdbapi.com/?apikey=168f295&i=" + newId + "&type&y=&plot=short"
     $.ajax({
         url: newQuery,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
         if (thisEvent.guests[0].suggestions.length < thisEvent.suggestionCap) {
         var newSuggestion = {
-            title: response.title,
-            poster: response.poster_400x570,
-            year: response.release_year,
-            plot: response.overview,
+            title: response.Title,
+            poster: response.Poster,
+            year: response.Year,
+            plot: response.Plot,
+            metascore: response.Metascore,
             votes: 0
         }
         thisEvent.guests[0].suggestions.push(newMovie);
@@ -107,7 +108,8 @@ $(document).on("click", ".search-result", function () {
         database.ref("/events/"+ eventKey).set(thisEvent);
         
     } else {
-        alert("You've entered enough, haven't you?"); //DELETE THIS SHIT NO ALERTS JUST TESTING KTHNX
+        alert("You've entered enough, haven't you?"); 
+        //TODO Delete Alert Prompts
     }
 
     }) //end AJAX 
@@ -135,7 +137,8 @@ $(document).on("click", ".upvote", function () {
     thisEvent.guests[0].upVotesRemaining--;
     database.ref("/events/"+ eventKey).set(thisEvent);
     } else {
-        alert("You're out of UpVotes"); //DELETE THIS NO ALERTS
+        alert("You're out of UpVotes"); 
+        //TODO Delete Alert Prompts
     }
 }) //end UpVoteButton
 
@@ -147,12 +150,13 @@ $(document).on("click", ".downvote", function () {
     thisEvent.guests[0].downVotesRemaining--;
     database.ref("/events/"+ eventKey).set(thisEvent);
     } else {
-        alert("You're out of Down Votes"); //DELETE THIS NO ALERTS
+        alert("You're out of Down Votes"); 
+        //TODO Delete Alert Prompts
     }
 }) //end DownVoteButton
 
 
-// // Test Info
+//-------------------- Test Info
 // var testEvent = {
 //     guests: [{
 //         name: "Jason",
