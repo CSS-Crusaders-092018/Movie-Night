@@ -1,6 +1,4 @@
-
-
-  // Initialize Firebase
+// Initialize Firebase
   
 $(document).ready(function(){
 
@@ -17,8 +15,8 @@ $(document).ready(function(){
 
 
     $('#submit').on('click', function(){
-        var email = $('#newEmail').val();
-        var password = $('#newPassword').val();
+        var email = $('#email').val();
+        var password = $('#password').val();
        
         firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
             // Handle Errors here.
