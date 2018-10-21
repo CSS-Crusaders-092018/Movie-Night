@@ -1,5 +1,3 @@
-
-
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyB3ognBnBLe-vgaHhsZV7ksufHgzg21VFs",
@@ -11,68 +9,78 @@ var config = {
 };
 firebase.initializeApp(config);
 
-    /////////////////////////////////////////////////////////////////////////////
-    //Login/Auth stuff//
-    ////////////////////////////////////////////////////////////////////////////
-    var currentUser = "";
-    // //Handle Account Status
-    (function initApp() {
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                //User is signed in.
-                // var displayName = user.displayName;
-                // var email = user.email;
-                // var emailVerified = user.emailVerified;
-                // var photoURL = user.photoURL;
-                // var isAnonymous = user.isAnonymous;
-                // var uid = user.uid;
-                // var providerData = user.providerData;
-                currentUser = user.uid;
+/////////////////////////////////////////////////////////////////////////////
+//Login/Auth stuff//
+////////////////////////////////////////////////////////////////////////////
 
-            } else {
-                // User is signed out.
-                console.log("signed out");
-                // ...
-            }
-        });
-    })();
+var currentUser = "";
+// //Handle Account Status
+(function initApp() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            //User is signed in.
+            // var displayName = user.displayName;
+            // var email = user.email;
+            // var emailVerified = user.emailVerified;
+            // var photoURL = user.photoURL;
+            // var isAnonymous = user.isAnonymous;
+            // var uid = user.uid;
+            // var providerData = user.providerData;
+            currentUser = user.uid;
+
+        } else {
+            // User is signed out.
+            console.log("signed out");
+            // ...
+        }
+    });
+})();
 
 ////////////////////////////////////////
 //////   Database stuff ///////////////
 //////////////////////////////////////
 
 var database = firebase.database();
-var eventList = database.ref("/events").once("value").then(function (snap){
-    var i = 1;
+var eventKey = "";
+var allEvents = "";
+var thisEvent = "";
+
+//Establish first event page on load
+database.ref("/users").once("value").then(function (snap) {
     snap.forEach(function (child) {
-        var newTab = $("<button>").attr("data-tab", child.key).addClass("tab-button").text("Tab " + i);
-        i++;
+        if (child.key === currentUser) {
+            var eventList = child.val().events;
+            setThisEvent(eventList[1])
+            eventTabLoad(eventList);
+        } //end If
+    }) //end forEach()
+})
+
+database.ref("/events").once("value").then(function (snap) {
+    setAllEvents(snap.val());
+})
+
+database.ref("/events/" + thisEvent).on("child_changed", function (snapshot) {
+    console.log(snapshot.val())
+    pageLoad();
+})
+
+function setThisEvent(eventItem) {
+    eventKey = eventItem;
+}
+
+function setAllEvents(eventObject) {
+    allEvents = eventObject;
+    thisEvent = allEvents[eventKey];
+    pageLoad();
+}
+
+function eventTabLoad(list) {
+    var eventList = list;
+    for (var i = 1; i < eventList.length; i++) {
+        var newTab = $("<button>").addClass("tab-button").attr("data-tab", eventList[i]).text("Tab " + i);
         $("#tab-display").append(newTab);
-    })
-})
-
-var thisEvent = undefined;
-var eventKey = undefined;
-
-database.ref("/events").on("child_added", function (snapshot) {
-    thisEvent = snapshot.val();
-    eventKey = snapshot.key;
-    pageLoad();
-})
-
-database.ref("/events").on("child_changed", function (snapshot) {
-    thisEvent = snapshot.val();
-    eventKey = snapshot.key;
-    console.log(eventKey);
-    console.log(thisEvent);
-    pageLoad();
-})
-
-function eventTabLoad() {
-    
-    for (i = 1; i < eventList.length; i++) {
-        //do stuff
-    }
+    } //end For
 }
 
 //On Page Load
@@ -103,7 +111,6 @@ function pageLoad() {
         $("#saved-movies").append(newItem);
     }
 }
-
 
 ///////////////////////////////////////
 //  API CALLS AND APP FUNCTIONALITY //
@@ -202,7 +209,17 @@ $(document).on("click", ".downvote", function () {
     }
 }) //end DownVoteButton
 
-eventTabLoad();
+//Event Tabs
+$(document).on("click", ".tab-button", function () {
+    var whichTab = $(this).attr("data-tab");
+    database.ref("/events").child(whichTab).once("value").then(function (snap) {
+        thisEvent = snap.val();
+        eventKey = snap.key;
+    })
+    console.log(whichTab);
+    pageLoad();
+})
+
 
 
 // $('#signin').on('click', function (event) {
@@ -286,9 +303,6 @@ eventTabLoad();
 
 
 
-
-
-
 // //-------------------- Test Info
 // var testEvent = {
 //     guests: [{
@@ -314,30 +328,20 @@ eventTabLoad();
 //     }
 //     ],
 //     suggestionCap: 4,
-//     eventDate: "Same time, same place",
-//     eventName: "Demo Event",
+//     eventDate: "Event 3",
+//     eventName: "Third Event",
 //     suggestionList: [
 //         "empty",
 //         {
-//             title: "The Shining",
+//             title: "Batman",
 //             poster: "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
 //             year: 1980,
 //             plot: "Jack Nicholson goes hard on his fam.",
-//             votes: 0
-//         }, {
-//             title: "Jurassic Park",
-//             poster: "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_.jpg",
-//             year: 1993,
-//             plot: "DINO DNA!",
-//             votes: 0
-//         }, {
-//             title: "Avatar",
-//             poster: "https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_.jpg",
-//             year: 2009,
-//             plot: "Only the highest grossing movie of all time!",
 //             votes: 0
 //         }
 //     ]
 // }
 
 // database.ref("/events").push(testEvent);
+
+
