@@ -21,3 +21,29 @@ body {
 jumbotron {
   background-color: lightblue
 }
+
+.col-md-12 {
+    border: solid 5px orangered
+}
+  
+.col-md-6 {
+    border: solid 5px grey
+}
+
+.col-md-2
+{
+    border: solid 5px black
+}
+
+
+#rotating-item-wrapper {
+    position: relative;
+    width: 980 px;
+    height: 347 px;
+}
+.rotating-item {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
