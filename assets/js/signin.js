@@ -24,12 +24,7 @@ $(document).ready(function () {
         var photoURL = user.photoURL;
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
-        var providerData = user.providerData;    
-
-        database.ref('users/' + uid).update({
-          username: name,
-          email: email
-        });
+        var providerData = user.providerData;
 
         window.location = "event-page-test.html"; //After successful login, user will be redirected to success.html
       } else {
@@ -50,6 +45,7 @@ $(document).ready(function () {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(function (param) {
+        console.log(param);
         console.log("success");
       })
       .catch(function (error) {
@@ -69,30 +65,53 @@ $(document).ready(function () {
     var email = $("#newEmail").val();
     var password = $("#newPassword").val();
 
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+    // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   console.log(errorCode)
+    //   console.log(errorMessage);
+    //   alert(error.message);
+    //   // ...
+    // });
+    // writeUserData(user);
+
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
+      var user = firebase.auth().currentUser;
+      writeUserData(user); // Optional
+    }, function (error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log(errorCode)
-      console.log(errorMessage);
-      alert(error.message);
-      // ...
+        console.log(errorCode)
+        console.log(errorMessage);
     });
   });
 
-  $("#forgotPassword").on("click", function() {
+  function writeUserData(user) {
+    // Get the uid and display name of the newly created user.
+    var uid = user.uid;
+
+    database.ref('users/' + uid).set({
+      email: user.email,
+      events: [0]
+    });
+
+  };
+
+  $("#forgotPassword").on("click", function () {
     var auth = firebase.auth();
     var email = $('#email').val();
 
-    auth.sendPasswordResetEmail(email).then(function() {
-        console.log("email sent");
-    // Email sent.
-    }).catch(function(error) {
-        console.log(error);
-    // An error happened.
-    });   
+    auth.sendPasswordResetEmail(email).then(function () {
+      console.log("email sent");
+      // Email sent.
+    }).catch(function (error) {
+      console.log(error);
+      // An error happened.
+    });
 
-   });
+  });
 
 });
 
@@ -100,10 +119,10 @@ $(document).ready(function () {
 $("#logout").on("click", function (event) {
   event.preventDefault();
   console.log("kbye")
-  firebase.auth().signOut().then(function() {
+  firebase.auth().signOut().then(function () {
     // Sign-out successful.
-    window.location = "index.html";
-  }, function(error) {
+    window.location = "index-test.html";
+  }, function (error) {
     // An error happened.
   });
 })

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Movie Night</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles-merged.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <header>
+      <nav role="navigation" class="probootstrap-nav hidden-xs">
+        <ul class="probootstrap-main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#" id="logout">Log Out</a></li>
+        </ul>
+      </nav>
+  </header>
+          <div id="tab-display">
+          </div>
+          <hr>
+          <h1 id="event-name"></h1>
+          <h2 id="event-date"></h2>
+          
+          <form>
+            <div class="form-group">
+              <label for="suggestion-input">Movie Suggestion</label>
+              <input type="text" class="form-control" id="suggestion-input" placeholder="Avatar">
+            </div>
+            <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
+          </form> <!-- End Form -->
+          <!-- Search Results -->
+          <div id="movie-display"></div>
+          <hr>
+
+          <!-- Suggestions List -->
+          <div id="saved-movies">
+            <h2>Suggestions</h2>
+          </div> <!-- end Suggestions -->
+
+
+
+
+  <footer class="probootstrap-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason
+            Moore <br> Joyce Nguyen, Isaac Bayon</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-------------------------------------------------------------------------->
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+  <!-- Jason's working copy -->
+  <!-- <script src="assets/js/signin.js"></script> -->
+  <script src="assets/js/app-test.js"></script>
+
+
+
+
+</body>
+
+</html>
