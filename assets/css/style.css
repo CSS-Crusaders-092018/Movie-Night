@@ -13,4 +13,11 @@ body {
   .col-md-8 {
     border: solid 5px blue
 }
-  
+
+.nav {
+ float: right;
+}
+
+jumbotron {
+  background-color: lightblue
+}
