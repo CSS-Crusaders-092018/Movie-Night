@@ -62,16 +62,16 @@
         <div class="container">
             <!-- This row is for the Event Details from the Host-->
             <div class="row">
-                <div class="col-md-2" id="event-name">
+                <div class="col-md-2" id="eventDetails">
                     <h2>Event Details: </h2>
 
                 </div>
                 <div class="col-md-5" id="event-date">
-                    <p> Use this ID to reference the Event Date from Firebase </p>
+                    <p> Use this ID id="event-date" to reference the Event Date from app.js </p>
                 </div>
 
-                <div class="col-md-5" id="eventHost">
-                    <p> Use this ID to reference the Event Host from Firebase </p>
+                <div class="col-md-5" id="event-name">
+                    <p> Use this ID id="event-name" to reference the Event Name from app.js </p>
                 </div>
 
             </div>
@@ -92,48 +92,47 @@
                             </tr>
                         </thead>
                         <!-- the table headings END here -->
-                        <tbody>
+                        <tbody id="saved-movies">
                             <!-- the js code will populate this section with rows from firebase-->
 
                         </tbody>
 
                     </table>
+                    <!-- </div id="saved-movies">
+        <p> movies apear here??</p>
+        <p>suggested Movie 2</p>
+        <p>suggested Movie 3</p>
 
-                    <p id="saved-movies"> movies apear here??</p>
-                    <p>suggested Movie 2</p>
-                    <p>suggested Movie 3</p>
 
+        </div> -->
+                    <br>
+                    <hr>
+                    <!-- This row is to display the movie search box to allow user to suggest-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form>
+                                <div class="form-group">
+                                    <label for="suggestion-input">Suggest up to 3 movies</label>
+                                    <input type="text" class="form-control" id="suggestion-input" placeholder="enter search topic">
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
 
-                </div>
-                <br>
-                <hr>
-                <!-- This row is to display the movie search box to allow user to suggest-->
-                <div class="row">
-                    <!-- <div class="col-md-12"> -->
-                    <form>
-                        <div class="form-group">
-                            <label for="suggestion-input">Suggest up to 3 movies</label>
-                            <input type="text" class="form-control" id="suggestion-input" placeholder="enter search topic">
+                            </form> <!-- End Form -->
                         </div>
-                        <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
-
-                    </form> <!-- End Form -->
-
-
-
-
-
-                </div>
-                <div class="row">
-                    <div id="movie-display">
-
-                        <h1>display search results</h1>
                     </div>
-                </div>
-                <!-- row for suggestiing ends here -->
 
-            </div>
-            <!-- container ends here -->
+                    <hr>
+
+
+                    <div class="row">
+                        <div id="movie-display">
+                            <h3>Search results: </h3>
+                        </div>
+                    </div>
+                    <!-- row for suggestiing ends here -->
+
+                    <!-- </div> -->
+                    <!-- container ends here -->
 
     </main>
     <!-- Footer -->
@@ -152,12 +151,12 @@
     <script src="../Movie-Night/assets/js/popper.min.js"></script>
     <script src="../Movie-Night/assets/js/bootstrap.min.js"></script>
     <script src="../Movie-Night/assets/js/app.js"></script>
-    <script src="../Movie-Night/assets/js/signin.js"></script>
-    <script src="../Movie-Night/assets/js/redirect.js"></script>
-    
+    <!-- <script src="../Movie-Night/assets/js/signin.js"></script> -->
+    <!-- <script src="../Movie-Night/assets/js/redirect.js"></script> -->
+
 
     <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script> -->
 
 </body>
 
