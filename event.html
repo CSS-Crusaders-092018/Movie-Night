@@ -59,54 +59,54 @@
         <div class="container">
             <!-- This row is for the Event Details from the Host-->
             <div class="row">
-                <div class="col-md-6">
-
+                <div class="col-md-2" id=event-name>
                     <h2>Event Details: </h2>
-                    <div id="eventDate">
-                        <p> Date of the event and who it's hosted by </p>
-                    </div>
 
-                    <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
                 </div>
-                <div class="col-md-6">
-                    <!-- no content here.  holding spot for the column row -->
+                <div class="col-md-5" id="event-date">
+                    <p> Use this ID to reference the Event Date from Firebase </p>
+                </div>
+
+                <div class="col-md-5" id="eventHost">
+                    <p> Use this ID to reference the Event Host from Firebase </p>
                 </div>
 
             </div>
+            <!-- event details row ends here -->
 
             <!-- This row is to display the movies suggested by everyone including the host-->
             <div class="row">
                 <div class="col-md-12">
-                    <!-- row inside of a 12 column so I can split up movie info? -->
-                        <div class="row">
-                                <div class="col-md-4">
-                
-                                    <p>Movie Name</p>
-                                </div>
-                                <div class="col-md-4">
-                
-                                        <p>Movie Release Date</p>
-                                    </div>
-                                    <div class="col-md-2">
-                
-                                            <p>Vote Up</p>
-                                        </div>
-                                        <div class="col-md-2">
-                
-                                                <p>Vote down</p>
-                                            </div>
-                
-                            </div>
-                    <p>ALL suggested movies will be listed here</p>
+
+                    <table class="table table-hover" id="eventMovieList">
+                        <!-- the table headings start here -->
+                        <thead>
+                            <tr>
+                                <th>Movie Name</th>
+                                <th>Release Date</th>
+                                <th>Vote Up</th>
+                                <th>Vote down</th>
+                            </tr>
+                        </thead>
+                        <!-- the table headings END here -->
+                        <tbody>
+                            <!-- the js code will populate this section with rows from firebase-->
+
+                        </tbody>
+
+                    </table>
+
+                    <p id="saved-movies"> movies apear here??</p>
+                    <p>suggested Movie 2</p>
+                    <p>suggested Movie 3</p>
+
+
                 </div>
-
-
-            </div>
-
-            <!-- This row is to display the movie search box to allow user to suggest-->
-
-            <div class="row">
-                <div class="col-md-8">
+                <br>
+                <hr>
+                <!-- This row is to display the movie search box to allow user to suggest-->
+                <div class="row">
+                    <!-- <div class="col-md-12"> -->
                     <form>
                         <div class="form-group">
                             <label for="suggestion-input">Suggest up to 3 movies</label>
@@ -114,19 +114,20 @@
                         </div>
                         <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
                     </form> <!-- End Form -->
+                    <!-- </div> -->
+
+
                 </div>
-                <div class="col-md-4">
-                    <!-- no content here for now -->
-                </div>
+
+                <!-- row for suggestiing ends here -->
 
             </div>
-
-
-            <hr>
-
-        </div> <!-- /container -->
+            <!-- container ends here -->
 
     </main>
+    <footer class="container">
+        <p>&copy; CSS Crusaders - 2018: Jason, Elizabeth, Joyce, Isaac</p>
+    </footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
