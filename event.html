@@ -59,8 +59,8 @@
         <div class="container">
             <!-- This row is for the Event Details from the Host-->
             <div class="row">
-                <div class="col-md-2" id=event-name>
-                    <h2>Event Details: </h2>
+                <div class="col-md-2" id="event-name">
+                    <h2 id="event-name">Event Details: </h2>
 
                 </div>
                 <div class="col-md-5" id="event-date">
@@ -113,7 +113,13 @@
                             <input type="text" class="form-control" id="suggestion-input" placeholder="enter search topic">
                         </div>
                         <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
+                        
                     </form> <!-- End Form -->
+
+                    <div id ="movie-display">
+
+                        <h1>display search results</h1>
+                    </div>
                     <!-- </div> -->
 
 
@@ -136,10 +142,13 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../Movie-Night/assets/js/jquery-slim.min.js"><\/script>')</script>
+    <script src="../Movie-Night/assets/js/popper.min.js"></script>
+    <script src="../Movie-Night/assets/js/bootstrap.min.js"></script>
     <script src="../Movie-Night/assets/js/app.js"></script>
+
+     <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 
 </body>
 
