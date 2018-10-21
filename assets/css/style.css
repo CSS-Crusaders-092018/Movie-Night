@@ -22,10 +22,10 @@ nav {
 }
 
 .jumbotron {
-height: 150px;
-width: 650px;
+height: 200px;
+width: 450px;
   background-color: lightblue;
-  padding: 25px
+margin-left: 350px;
    
 }
 
@@ -56,5 +56,15 @@ width: 650px;
 }
 
 footer {
+    text-align: center;
+}
+
+img {
+    margin-top: 8px;
+}
+
+h1
+p
+ {
     text-align: center;
 }
