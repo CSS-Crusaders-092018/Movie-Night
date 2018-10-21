@@ -80,7 +80,22 @@ $(document).ready(function () {
     });
   });
 
+  $("#forgotPassword").on("click", function() {
+    var auth = firebase.auth();
+    var email = $('#email').val();
+
+    auth.sendPasswordResetEmail(email).then(function() {
+        console.log("email sent");
+    // Email sent.
+    }).catch(function(error) {
+        console.log(error);
+    // An error happened.
+    });   
+
+   });
+
 });
+
 
 $("#logout").on("click", function (event) {
   event.preventDefault();
