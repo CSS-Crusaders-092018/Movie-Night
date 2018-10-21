@@ -1,4 +1,4 @@
-
+$(document).ready(function () {
 
 // Initialize Firebase
 var config = {
@@ -155,7 +155,7 @@ $(document).on("click", ".downvote", function () {
     }
 }) //end DownVoteButton
 
-
+});
 //-------------------- Test Info
 // var testEvent = {
 //     guests: [{
