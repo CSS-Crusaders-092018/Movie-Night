@@ -1,5 +1,7 @@
 body {
     padding-top: 3.5rem;
+    margin-left: 45px;
+    margin-right: 45px;
   }
   .starter-template {
     padding: 3rem 1.5rem;
@@ -7,19 +9,24 @@ body {
   }
 
   .col-md-4 {
-      border: solid 5px red
+      border: solid 1px lightblue
   }
 
   .col-md-8 {
-    border: solid 5px blue
+    border: solid 1px lightblue
 }
 
-.nav {
+nav {
  float: right;
+ 
 }
 
-jumbotron {
-  background-color: lightblue
+.jumbotron {
+height: 150px;
+width: 650px;
+  background-color: lightblue;
+  padding: 25px
+   
 }
 
 .col-md-12 {
