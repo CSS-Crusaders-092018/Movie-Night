@@ -1,63 +1,91 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../Movie-Night/favicon.ico">
 
-    <title>Movie Night</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../Movie-Night/favicon.ico">
 
-    <!-- Bootstrap core CSS -->
-    <link href="../Movie-Night/assets/css/bootstrap.min.css" rel="stylesheet">
+  <title>Movie Night</title>
 
-    <!-- Custom styles for this template -->
-    <link href="../Movie-Night/assets/css/style.css" rel="stylesheet">
-  </head>
+  <!-- Bootstrap core CSS -->
+  <link href="../Movie-Night/assets/css/bootstrap.min.css" rel="stylesheet">
 
-  <body>
+  <!-- Custom styles for this template -->
+  <link href="../Movie-Night/assets/css/style.css" rel="stylesheet">
+</head>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<body>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
-          <li class="nav-item">
-            <a class="nav-link" href="event.html">Events</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="createnew.html">Create Event <span class="sr-only">(current)</span></a>
-          </li>
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+      <a href="index.html" class="probootstrap-logo"></a>
+      <nav role="navigation" class="probootstrap-nav hidden-xs">
+        <ul class="probootstrap-main-nav">
+          <a class="active"><a href="index.html">Home</a>
+            <a href="event.html">Event</a>
+            <a href="about.html">About</a>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+    </div>
+  </header>
+
+  <main role="main">
+
+    <div class="jumbotron vertical-center">
+      <div class="container text-center">
+        <div class="col-md-5">
+          <h1>Movie Night</h1>
+          <p>Welcome to Movie Night.</p>
+        </div>
       </div>
-    </nav>
+    </div>
 
-    <main role="main" class="container">
+    <div class="starter-template">
+      <h1>Create a new event</h1>
+      <form>
+        <div class="form-group row">
+          <label for="newEventDate" class="col-sm-2 col-form-label">When your next event will be</label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" id="newEventDate" placeholder=" ">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="hostName" class="col-sm-2 col-form-label">Host by</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="hostName" placeholder=" ">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="inviteeEmail" class="col-sm-2 col-form-label">Send invitation to</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inviteeEmail" placeholder=" ">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
+      </form>
+    </div>
 
-      <div class="starter-template">
-        <h1>Create a new event</h1>
-        <p class="lead">New event stuff goes here<br> New event info here</p>
-      </div>
+  </main>
 
-    </main><!-- /.container -->
 
-    <!-- Bootstrap core JavaScript
+
+  <!-- Footer -->
+  <footer class="container">
+    <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason
+      Moore,
+      Joyce Nguyen, Isaac Bayon</p>
+  </footer>
+
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
-  </body>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="../../../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../../../dist/js/bootstrap.min.js"></script>
+</body>
+
 </html>
