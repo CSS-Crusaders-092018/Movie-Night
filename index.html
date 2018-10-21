@@ -16,47 +16,33 @@
 
     <!-- Custom styles for this template -->
     <link href="../Movie-Night/assets/css/style.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        var image1 = new Image()
+        image1.src = "assets/images/Avatar.jpg"
+        var image2 = new Image()
+        image2.src = "assets/images/tomhank.jpg"
+        var image3 = new Image()
+        image3.src = "assets/images/Jurassic.jpg"
+        var image4 = new Image()
+        image4.src = "assets/images/frozen.jpg"
+        var image5 = new Image()
+        image5.src = "assets/images/dr.Strange.jpg"
+        var image6 = new Image()
+        image6.src = "assets/images/Oceans8.jpg"
+        var image7 = new Image()
+        image7.src = "assets/images/thenotebook.jpg"
+        var image8 = new Image()
+        image8.src = "assets/images/WonderWoman.jpg"
+        var image9 = new Image()
+        image9.src = "assets/images/crazyrichasian.jpg"
+
+    </script>
 </head>
 
 <body>
 
-    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="event.html">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="createnew.html">Create Event</a>
-                </li>
-            </ul>
-        </div>
-    </nav> -->
     <header role="banner" class="probootstrap-header">
-        <!-- <div class="container">
-            <a href="index.html" class="probootstrap-logo"></a>
-      
-            <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
-            <div class="mobile-menu-overlay"></div>
-      
-            <nav role="navigation" class="probootstrap-nav hidden-xs">
-              <ul class="probootstrap-main-nav">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="event.html">Event</a></li>
-                <li><a href="about.html">About</a></li>
-              </ul>
-
-          </div> -->
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="#">Home</a>
@@ -80,14 +66,29 @@
         </div>
 
         <div class="container">
-            <!-- Example row of columns -->
+            <!-- MOVIES SLIDE -->
             <div class="row">
                 <div class="col-md-4">
-
-                    <h2>random movie poster</h2>
-                    <p>a movie poster </p>
-                    <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+                    <section class="probootstrap-section-half probootstrap-no-hover">
+                        <img src="assets/images/Avatar.jpg" name="slide" width="400" height="550">
+                        <script type="text/javascript">
+                            var step = 1
+                            function slideit() {
+                                document.images.slide.src = eval("image" + step + ".src")
+                                if (step < 9)
+                                    step++
+                                else
+                                    step = 1
+                                setTimeout("slideit()", 2000)
+                            }
+                            slideit()
+                        </script>
+                    </section>
                 </div>
+
+
+                <!-- FORM -->
+
                 <div class="col-md-8">
                     <div class="container">
                         <h2>Sign In</h2>
