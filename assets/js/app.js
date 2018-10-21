@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyB3ognBnBLe-vgaHhsZV7ksufHgzg21VFs",
@@ -262,4 +264,4 @@ $(document).on("click", ".tab-button", function () {
 
 // database.ref("/events").push(testEvent);
 
-
+});
