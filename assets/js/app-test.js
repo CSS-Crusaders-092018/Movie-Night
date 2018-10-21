@@ -8,13 +8,48 @@ var config = {
     projectId: "movie-night-464be",
     storageBucket: "movie-night-464be.appspot.com",
     messagingSenderId: "123201978661"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
+
+    /////////////////////////////////////////////////////////////////////////////
+    //Login/Auth stuff//
+    ////////////////////////////////////////////////////////////////////////////
+    var currentUser = "";
+    // //Handle Account Status
+    (function initApp() {
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                //User is signed in.
+                // var displayName = user.displayName;
+                // var email = user.email;
+                // var emailVerified = user.emailVerified;
+                // var photoURL = user.photoURL;
+                // var isAnonymous = user.isAnonymous;
+                // var uid = user.uid;
+                // var providerData = user.providerData;
+                currentUser = user.uid;
+
+            } else {
+                // User is signed out.
+                console.log("signed out");
+                // ...
+            }
+        });
+    })();
+
+////////////////////////////////////////
+//////   Database stuff ///////////////
+//////////////////////////////////////
 
 var database = firebase.database();
-var eventList = database.ref("/events").push();
-// var user = firebase.auth().currentUser;
-// console.log(user);
+var eventList = database.ref("/events").once("value").then(function (snap){
+    var i = 1;
+    snap.forEach(function (child) {
+        var newTab = $("<button>").attr("data-tab", child.key).addClass("tab-button").text("Tab " + i);
+        i++;
+        $("#tab-display").append(newTab);
+    })
+})
 
 var thisEvent = undefined;
 var eventKey = undefined;
@@ -32,6 +67,13 @@ database.ref("/events").on("child_changed", function (snapshot) {
     console.log(thisEvent);
     pageLoad();
 })
+
+function eventTabLoad() {
+    
+    for (i = 1; i < eventList.length; i++) {
+        //do stuff
+    }
+}
 
 //On Page Load
 function pageLoad() {
@@ -61,6 +103,11 @@ function pageLoad() {
         $("#saved-movies").append(newItem);
     }
 }
+
+
+///////////////////////////////////////
+//  API CALLS AND APP FUNCTIONALITY //
+/////////////////////////////////////
 
 //Get Movie Data
 function getMovieData(movie) {
@@ -95,22 +142,22 @@ $(document).on("click", ".search-result", function () {
         method: "GET"
     }).then(function (response) {
         if (thisEvent.guests[0].suggestions.length < thisEvent.suggestionCap) {
-        var newSuggestion = {
-            title: response.Title,
-            poster: response.Poster,
-            year: response.Year,
-            plot: response.Plot,
-            metascore: response.Metascore,
-            votes: 0
+            var newSuggestion = {
+                title: response.Title,
+                poster: response.Poster,
+                year: response.Year,
+                plot: response.Plot,
+                metascore: response.Metascore,
+                votes: 0
+            }
+            thisEvent.guests[0].suggestions.push(newMovie);
+            thisEvent.suggestionList.push(newSuggestion);
+            database.ref("/events/" + eventKey).set(thisEvent);
+
+        } else {
+            alert("You've entered enough, haven't you?");
+            //TODO Delete Alert Prompts
         }
-        thisEvent.guests[0].suggestions.push(newMovie);
-        thisEvent.suggestionList.push(newSuggestion);
-        database.ref("/events/"+ eventKey).set(thisEvent);
-        
-    } else {
-        alert("You've entered enough, haven't you?"); 
-        //TODO Delete Alert Prompts
-    }
 
     }) //end AJAX 
     $("#movie-display").empty();
@@ -131,32 +178,118 @@ $(document).on("click", ".list-title", function () {
 //Vote Buttons
 $(document).on("click", ".upvote", function () {
     if (thisEvent.guests[0].upVotesRemaining > 0) {
-    
-    var whichMovie = $(this).attr("data-item");
-    thisEvent.suggestionList[whichMovie].votes++;
-    thisEvent.guests[0].upVotesRemaining--;
-    database.ref("/events/"+ eventKey).set(thisEvent);
+
+        var whichMovie = $(this).attr("data-item");
+        thisEvent.suggestionList[whichMovie].votes++;
+        thisEvent.guests[0].upVotesRemaining--;
+        database.ref("/events/" + eventKey).set(thisEvent);
     } else {
-        alert("You're out of UpVotes"); 
+        alert("You're out of UpVotes");
         //TODO Delete Alert Prompts
     }
 }) //end UpVoteButton
 
 $(document).on("click", ".downvote", function () {
     if (thisEvent.guests[0].downVotesRemaining > 0) {
-    
-    var whichMovie = $(this).attr("data-item");
-    thisEvent.suggestionList[whichMovie].votes--;
-    thisEvent.guests[0].downVotesRemaining--;
-    database.ref("/events/"+ eventKey).set(thisEvent);
+
+        var whichMovie = $(this).attr("data-item");
+        thisEvent.suggestionList[whichMovie].votes--;
+        thisEvent.guests[0].downVotesRemaining--;
+        database.ref("/events/" + eventKey).set(thisEvent);
     } else {
-        alert("You're out of Down Votes"); 
+        alert("You're out of Down Votes");
         //TODO Delete Alert Prompts
     }
 }) //end DownVoteButton
 
+eventTabLoad();
 
-//-------------------- Test Info
+
+// $('#signin').on('click', function (event) {
+//     event.preventDefault();
+//     console.log("clicked signin")
+//     var email = $('#email').val();
+//     var password = $('#password').val();
+
+//     firebase
+//         .auth()
+//         .signInWithEmailAndPassword(email, password)
+//         .then(function (param) {
+//             console.log(param);
+//             console.log("success");
+//         })
+//         .catch(function (error) {
+//             // Handle Errors here.
+//             var errorCode = error.code;
+//             var errorMessage = error.message;
+//             console.log(errorCode);
+//             console.log(errorMessage);
+//             alert("Sorry, invalid login");
+//             // ...
+//         });
+// });
+
+// $("#signup").on("click", function (event) {
+//     event.preventDefault();
+//     console.log("clicked sign up");
+//     var email = $("#newEmail").val();
+//     var password = $("#newPassword").val();
+
+//     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+//         // Handle Errors here.
+//         var errorCode = error.code;
+//         var errorMessage = error.message;
+//         console.log(errorCode)
+//         console.log(errorMessage);
+//         alert(error.message);
+//         // ...
+//     });
+//     writeUserData(user);
+// });
+
+// function writeUserData(user) {
+//     // Get the uid and display name of the newly created user.
+//     var uid = user.uid;
+
+//     database.ref('users/' + uid).set({
+//         email: email,
+//         events: [0]
+//     });
+
+// };
+
+// $("#forgotPassword").on("click", function () {
+//     var auth = firebase.auth();
+//     var email = $('#email').val();
+
+//     auth.sendPasswordResetEmail(email).then(function () {
+//         console.log("email sent");
+//         // Email sent.
+//     }).catch(function (error) {
+//         console.log(error);
+//         // An error happened.
+//     });
+
+// });
+
+
+// $("#logout").on("click", function (event) {
+//     event.preventDefault();
+//     console.log("kbye")
+//     firebase.auth().signOut().then(function () {
+//         // Sign-out successful.
+//         window.location = "index.html";
+//     }, function (error) {
+//         // An error happened.
+//     });
+// })
+
+
+
+
+
+
+// //-------------------- Test Info
 // var testEvent = {
 //     guests: [{
 //         name: "Jason",
