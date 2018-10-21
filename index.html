@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- ISAAC ----get rid of this or get a new one to fit the movie night theme -->
+    <link rel="icon" href="../Movie-Night/favicon.ico">
+
+    <title>Movie Night</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../Movie-Night/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../Movie-Night/assets/css/style.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        var image1 = new Image()
+        image1.src = "assets/images/Avatar.jpg"
+        var image2 = new Image()
+        image2.src = "assets/images/tomhank.jpg"
+        var image3 = new Image()
+        image3.src = "assets/images/Jurassic.jpg"
+        var image4 = new Image()
+        image4.src = "assets/images/frozen.jpg"
+        var image5 = new Image()
+        image5.src = "assets/images/dr.Strange.jpg"
+        var image6 = new Image()
+        image6.src = "assets/images/Oceans8.jpg"
+        var image7 = new Image()
+        image7.src = "assets/images/thenotebook.jpg"
+        var image8 = new Image()
+        image8.src = "assets/images/WonderWoman.jpg"
+        var image9 = new Image()
+        image9.src = "assets/images/crazyrichasian.jpg"
+
+    </script>
+</head>
+
+<body>
+
+    <header role="banner" class="probootstrap-header">
+        <div class="container">
+            <a href="index.html" class="probootstrap-logo"></a>
+            <nav role="navigation" class="probootstrap-nav hidden-xs">
+                <ul class="probootstrap-main-nav">
+                    <a class="active"><a href="index.html">Home</a>
+                    <a href="event.html">Event</a>
+                    <a href="about.html">About</a>
+                </ul>
+        </div>
+    </header>
+
+
+    <main role="main">
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <div class="col-md-5">
+                    <h1>Movie Night</h1>
+                    <p>Welcome to Movie Night.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- MOVIES SLIDE -->
+            <div class="row">
+                <div class="col-md-4">
+                    <section class="probootstrap-section-half probootstrap-no-hover">
+                        <img src="assets/images/Avatar.jpg" name="slide" width="350" height="550">
+                        <script type="text/javascript">
+                            var step = 1
+                            function slideit() {
+                                document.images.slide.src = eval("image" + step + ".src")
+                                if (step < 9)
+                                    step++
+                                else
+                                    step = 1
+                                setTimeout("slideit()", 2000)
+                            }
+                            slideit()
+                        </script>
+                    </section>
+                </div>
+
+
+                <!-- FORM -->
+
+                <div class="col-md-8">
+                    <div class="container">
+                        <h2>Sign In</h2>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="signUpEmail">Email address</label>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                        placeholder="Enter your email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="inputPassword">Password</label>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-6">
+                                    <button type="submit" class="btn btn-primary" id="signin">Sign In</button><a href="#"
+                                        id="forgotPassword"><span> Forgot Your Password?</span></a>
+                                </div>
+                            </div>
+                        </form>
+
+                        <h2>Sign Up</h2>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="NewLoginEmail1">Email address</label>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" id="newEmail" aria-describedby="emailHelp"
+                                        placeholder="Enter a valid email">
+                                    <small id="emailHelp" class="form-text text-muted">We will not share your email
+                                        with anyone.</small>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="NewInputPassword">Password</label>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" id="newPassword" placeholder="Enter a password">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-6">
+                                    <button type="submit" class="btn btn-primary" id="signup">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="container">
+        <p>&copy; CSS Crusaders - 2018: Jason Moore, Elizabeth, Joyce, Isaac</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../Movie-Night/assets/js/jquery-slim.min.js"><\/script>')</script>
+    <script src="../Movie-Night/assets/js/popper.min.js"></script>
+    <script src="../Movie-Night/assets/js/bootstrap.min.js"></script>
+    <script src="../Movie-Night/assets/js/app.js"></script>
+
+</body>
+
+</html>
