@@ -15,6 +15,10 @@
 
     <!-- Custom styles for this template -->
     <link href="../Movie-Night/assets/css/style.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 </head>
 
 <body>
@@ -60,7 +64,7 @@
             <!-- This row is for the Event Details from the Host-->
             <div class="row">
                 <div class="col-md-2" id="event-name">
-                    <h2 id="event-name">Event Details: </h2>
+                    <h2>Event Details: </h2>
 
                 </div>
                 <div class="col-md-5" id="event-date">
@@ -113,10 +117,10 @@
                             <input type="text" class="form-control" id="suggestion-input" placeholder="enter search topic">
                         </div>
                         <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
-                        
+
                     </form> <!-- End Form -->
 
-                    <div id ="movie-display">
+                    <div id="movie-display">
 
                         <h1>display search results</h1>
                     </div>
@@ -147,8 +151,8 @@
     <script src="../Movie-Night/assets/js/bootstrap.min.js"></script>
     <script src="../Movie-Night/assets/js/app.js"></script>
 
-     <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 
 </body>
 
