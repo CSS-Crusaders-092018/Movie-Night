@@ -113,37 +113,54 @@
       <img src="img/frozen.jpg" style="width:250px;height:275x;">
       </div>
     </section>  -->
-        <div>
-
-          <h1>Sign In</h1>
-          <form>
+        <div class="container">
+          <h2 style="text-align:center">Sign In</h2>
+          <form class="form-horizontal">
             <div class="form-group">
-              <label for="signUpEmail">Email address</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email">
+              <label class="control-label col-sm-2" for="signUpEmail">Email address</label>
+              <div class="col-sm-6">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email">
+              </div>
             </div>
             <div class="form-group">
-              <label for="inputPassword">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Enter your password">
+              <label class="control-label col-sm-2" for="inputPassword">Password</label>
+              <div class="col-sm-6">
+                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary" id="signin">Sign In</button>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-6">
+                <button type="submit" class="btn btn-primary" id="signin">Sign In</button>
+              </div>
+            </div>
           </form>
-        </div>
-        <div>
-          <h1>Sign Up</h1>
-          <form>
-            <div class="form-group">
-              <label for="NewLoginEmail1">Email address</label>
+
+          <h2 style="text-align:center">Sign Up</h2>
+          <form class="form-horizontal">
+              <div class="form-group">
+            <label class="control-label col-sm-2" for="NewLoginEmail1">Email address</label>
+            <div class="col-sm-6">
               <input type="email" class="form-control" id="newEmail" aria-describedby="emailHelp" placeholder="Enter a valid email">
               <small id="emailHelp" class="form-text text-muted">We will not share your email with anyone.</small>
             </div>
-            <div class="form-group">
-              <label for="NewInputPassword">Password</label>
-              <input type="password" class="form-control" id="newPassword" placeholder="Enter a password">
-              <!--Unneeded form field to reenter password-->
-              <!--<br>
-          <input type="password" class="form-control" id="NewInputPassword2" placeholder="Re-Enter Password">-->
             </div>
-            <button type="submit" class="btn btn-primary" id="signup">Sign Up</button>
+            <div class="form-horizontal">
+                <div class="form-group">
+              <label class="control-label col-sm-2" for="NewInputPassword">Password</label>
+              <div class="col-sm-6">
+                <input type="password" class="form-control" id="newPassword" placeholder="Enter a password">
+                <!--Unneeded form field to reenter password-->
+                <!--<br>
+          <input type="password" class="form-control" id="NewInputPassword2" placeholder="Re-Enter Password">-->
+              </div>
+            </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-6">
+                <button type="submit" class="btn btn-primary" id="signup">Sign Up</button>
+              </div>
+            </div>
           </form>
         </div>
 
