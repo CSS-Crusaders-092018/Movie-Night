@@ -9,6 +9,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var database = firebase.database();
 ///////////////////////////////////
 /////   Login/Auth stuff  ////////
 /////////////////////////////////
@@ -39,23 +40,18 @@ var currentUser = "";
 ////////////////////////////////
 ////////////////////////////////
 /////////////////////////////////
-
+var userData = "";
 //Establish first event page on load
 database.ref("/users").once("value").then(function (snap) {
-    snap.forEach(function (child) {
-        if (child.key === currentUser) {
-            var eventList = child.val().events;
-            setThisEvent(eventList[1])
-            eventTabLoad(eventList);
-        } //end If
-    }) //end forEach()
+    userData = snap.val();
 })
 
+console.log(userData);
 
 $(document).on("click", "#event-submit", function (event) {
     event.preventDefault();
     var eventDate = $("#newEventDate").val().trim();
-    var eventName = $("#hostName").val().trim();
+    var eventName = $("#eventName").val().trim();
     var guests = $("#inviteeEmail").val().trim();
 
     var guestArray = guests.split(",");
@@ -76,15 +72,26 @@ function getData(date, name, newGuests) {
 
     for (var i = 0; i < newGuests.length; i++) {
         nextEvent.guests.push({
-            name: newGuests[i],
+            name: newGuests[i].trim(),
             suggestions: ["empty"],
             upVotesRemaining: 3,
             downVotesRemaining: 3
         })
     }
+    console.log(nextEvent);
 } //end getData()
 
-
+//Logout 
+$("#logout").on("click", function (event) {
+    event.preventDefault();
+    console.log("kbye")
+    firebase.auth().signOut().then(function () {
+      // Sign-out successful.
+      window.location = "index.html";
+    }, function (error) {
+      // An error happened.
+    });
+  })
 
 
 
