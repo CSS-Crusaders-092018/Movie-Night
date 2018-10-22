@@ -40,6 +40,17 @@ var currentUser = "";
 ////////////////////////////////
 /////////////////////////////////
 
+//Establish first event page on load
+database.ref("/users").once("value").then(function (snap) {
+    snap.forEach(function (child) {
+        if (child.key === currentUser) {
+            var eventList = child.val().events;
+            setThisEvent(eventList[1])
+            eventTabLoad(eventList);
+        } //end If
+    }) //end forEach()
+})
+
 
 $(document).on("click", "#event-submit", function (event) {
     event.preventDefault();
