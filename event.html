@@ -32,8 +32,11 @@
                 <ul class="probootstrap-main-nav">
                     <a href="index.html">Home</a>
                     <a class="active"><a href="event.html">Events</a>
-                    <a href="about.html">About</a>
-                    <a href="index.html" id="logout">Log Out</a>
+                        <a href="about.html">About</a>
+                        <!-- the logout is not working- Sunday 10.21 11:53 PM. ib -->
+                        <a href="index.html" >Log Out
+                            <div id="logout"></div>
+                        </a>
                 </ul>
         </div>
     </header>
@@ -91,7 +94,9 @@
                     <form>
                         <hr>
                         <div class="form-group">
-                            <label for="suggestion-input"><h1>Suggest up to 2 movies</h1></label>
+                            <label for="suggestion-input">
+                                <h1>Suggest up to 2 movies</h1>
+                            </label>
                             <input type="text" class="form-control" id="suggestion-input" placeholder="enter search topic">
                         </div>
                         <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
@@ -115,7 +120,9 @@
                         <!-- the table headings start here -->
                         <thead>
                             <tr>
-                                <th><h1>Suggested Movies - Vote on your favorite 2</h1></th>
+                                <th>
+                                    <h1>Suggested Movies - Vote on your favorite 2</h1>
+                                </th>
                             </tr>
 
 
@@ -132,8 +139,8 @@
                 </div>
                 <div class="col-md-3">
                     <div id="winner">
-                        <h3>  
-                            Winner 🏆 is:  id is "winner"
+                        <h3>
+                            Winner 🏆 is: id is "winner"
                         </h3>
                     </div>
                 </div>
