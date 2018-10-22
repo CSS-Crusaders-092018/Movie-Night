@@ -26,7 +26,7 @@ $(document).ready(function () {
         var uid = user.uid;
         var providerData = user.providerData;
 
-        window.location = "event-page-test.html"; //After successful login, user will be redirected to success.html
+        window.location = "event.html"; //After successful login, user will be redirected to success.html
       } else {
         // User is signed out.
         console.log("signed out");

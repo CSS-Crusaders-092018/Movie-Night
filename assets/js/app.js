@@ -1,4 +1,4 @@
-$(document).ready(function () {
+// $(document).ready(function () {
 
 // Initialize Firebase
 var config = {
@@ -264,4 +264,4 @@ $(document).on("click", ".tab-button", function () {
 
 // database.ref("/events").push(testEvent);
 
-});
+// });
