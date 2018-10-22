@@ -26,7 +26,7 @@ $(document).ready(function () {
         var uid = user.uid;
         var providerData = user.providerData;
 
-        window.location = "event-page-test.html"; //After successful login, user will be redirected to success.html
+        window.location = "event.html"; //After successful login, user will be redirected to success.html
       } else {
         // User is signed out.
         console.log("signed out");
@@ -120,7 +120,7 @@ $("#logout").on("click", function (event) {
   console.log("kbye")
   firebase.auth().signOut().then(function () {
     // Sign-out successful.
-    window.location = "index-test.html";
+    window.location = "index.html";
   }, function (error) {
     // An error happened.
   });
