@@ -11,7 +11,8 @@
     <title>Movie Night</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../Movie-Night/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
     <link href="../Movie-Night/assets/css/style.css" rel="stylesheet">
@@ -69,28 +70,28 @@
             <div class="container">
                 <h1 class="display-3">Movie Night</h1>
                 <p>Your Events</p>
-                <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
             </div>
         </div>
 
         <div class="container">
             <!-- This row is for the Event Details from the Host-->
             <div class="row">
-                <div class="col-md-2" id="eventDetails">
+                <div class="col-md-3" id="eventDetails">
                     <h2>Event Details: </h2>
 
                 </div>
                 <div id="tab-display">
                     <!-- <p>tab-display div</p> -->
+                    <div class="col-md-5" id="event-date">
+                            <!-- <p> Use this ID id="event-date" to reference the Event Date from app.js </p> -->
+                        </div>
+        
+                        <div class="col-md-5" id="event-name">
+                            <!-- <p> Use this ID id="event-name" to reference the Event Name from app.js </p> -->
+                        </div>
                 </div>
 
-                <div class="col-md-5" id="event-date">
-                    <!-- <p> Use this ID id="event-date" to reference the Event Date from app.js </p> -->
-                </div>
-
-                <div class="col-md-5" id="event-name">
-                    <!-- <p> Use this ID id="event-name" to reference the Event Name from app.js </p> -->
-                </div>
+                
             </div>
             <!-- event details row ends here -->
 
