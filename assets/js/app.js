@@ -11,9 +11,9 @@ var config = {
 };
 firebase.initializeApp(config);
 
-/////////////////////////////////////////////////////////////////////////////
-//Login/Auth stuff//
-////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////
+/////   Login/Auth stuff  ////////
+/////////////////////////////////
 
 var currentUser = "";
 // //Handle Account Status
@@ -222,7 +222,17 @@ $(document).on("click", ".tab-button", function () {
     pageLoad();
 })
 
-
+//Logout 
+$("#logout").on("click", function (event) {
+    event.preventDefault();
+    console.log("kbye")
+    firebase.auth().signOut().then(function () {
+      // Sign-out successful.
+      window.location = "index-test.html";
+    }, function (error) {
+      // An error happened.
+    });
+  })
 // //-------------------- Test Info
 // var testEvent = {
 //     guests: [{

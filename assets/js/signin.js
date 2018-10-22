@@ -115,13 +115,12 @@ $(document).ready(function () {
 
 });
 
-
 $("#logout").on("click", function (event) {
   event.preventDefault();
   console.log("kbye")
   firebase.auth().signOut().then(function () {
     // Sign-out successful.
-    window.location = "index-test.html";
+    window.location = "index.html";
   }, function (error) {
     // An error happened.
   });
