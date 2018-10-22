@@ -93,7 +93,10 @@ $("#logout").on("click", function (event) {
     });
   })
 
-
+// use firebase list of actors to select from users already in database
+// can we use Firebase transaction - join state usable for this event?
+// use Firebase invitations?
+// EA created dynamic link : https://movienight.page.link and added whitelist url
 
 
 // //-------------------- Test Info
