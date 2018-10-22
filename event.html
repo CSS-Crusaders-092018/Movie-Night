@@ -1,184 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Movie Night</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles-merged.css">
-  <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="css/custom.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/assets/images/film-favicon.ico">
 
+    <title>Movie Night</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="../Movie-Night/assets/css/style.css" rel="stylesheet">
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 </head>
 
 <body>
 
-  <!-- START: header -->
-
-  <div class="probootstrap-loader"></div>
-
-  <header role="banner" class="probootstrap-header">
-    <div class="container">
-      <a href="index.html" class="probootstrap-logo"></a>
-
-      <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
-      <div class="mobile-menu-overlay"></div>
-
-      <nav role="navigation" class="probootstrap-nav hidden-xs">
-          <ul class="probootstrap-main-nav">
-            <li><a href="index.html">Home</a></li>
-             <li class="active"><a href="event.html">Event</a></li>
-            <li><a href="about.html">About</a></li>
-        
-          </ul>
-        </ul>
-
-      </nav>
-    </div>
-  </header>
-  <!-- END: header -->
-
-  <div class="probootstrap-main">
-
-    <section class="probootstrap-section-half probootstrap-no-hover">
-      <div class="probootstrap-image" style="background-image: url(img/movie-night.jpg)"></div>
-      <div class="probootstrap-text">
-        <div class="probootstrap-inner probootstrap-animate">
-          <button type="button" class="btn btn-md btn-danger" data-toggle="popover" title="Popover title" data-content=" ">Your Next Movie Night</button> 
-          <br>
-          <button type="button" class="btn btn-md btn-danger" data-toggle="popover" title="Popover title" data-content=" ">Create Your Next Move Night</button>
-            <!-- Event Date   <br><br>
-            Invitees   <br><br>
-            what else? -->
-
+    <header role="banner" class="probootstrap-header">
+        <div class="container">
+            <a href="index.html" class="probootstrap-logo"></a>
+            <nav role="navigation" class="probootstrap-nav hidden-xs">
+                <ul class="probootstrap-main-nav">
+                    <a href="index.html">Home</a>
+                    <a class="active"><a href="event.html">Events</a>
+                        <a href="about.html">About</a>
+                        <!-- the logout is not working- Sunday 10.21 11:53 PM. ib FIXED: MON, 1:25AM EA-->
+                        <a href="index.html" id="logout">Log Out</a></li>
+                </ul>
         </div>
-      </div>
-    </section>
-    <!-- END section -->
+    </header>
 
+    <main role="main">
 
-    <section class="probootstrap-section">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-md-4">
-            <div class="service left-icon probootstrap-animate">
-
-              <div class="icon">
-                <i class="icon-laptop3"></i>
-              </div>
-              <div class="text">
-                <h3 class="heading">Business Strategy</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                  the blind texts. </p>
-                <p><a href="single-page.html">Learn more</a></p>
-              </div>
-
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron vertical-center">
+            <div class="container">
+                <div class="col-md-10 offset-md-4">
+                    <h1>Movie Night</h1>
+                    <p>Your Events</p>
+                </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service left-icon probootstrap-animate">
-              <div class="icon">
-                <i class="icon-presentation"></i>
-              </div>
-              <div class="text">
-                <h3 class="heading">Business Marketing</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                  the blind texts. </p>
-                <p><a href="single-page.html">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service left-icon probootstrap-animate">
-              <div class="icon">
-                <i class="icon-wallet2"></i>
-              </div>
-              <div class="text">
-                <h3 class="heading">Business Profit</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                  the blind texts. </p>
-                <p><a href="single-page.html">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-md-4">
-            <div class="service left-icon probootstrap-animate">
-
-              <div class="icon">
-                <i class="icon-hourglass"></i>
-              </div>
-              <div class="text">
-                <h3 class="heading">Fast &amp; Reliable</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                  the blind texts. </p>
-                <p><a href="single-page.html">Learn more</a></p>
-              </div>
-
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service left-icon probootstrap-animate">
-              <div class="icon">
-                <i class="icon-shield3"></i>
-              </div>
-              <div class="text">
-                <h3 class="heading">Business Security</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                  the blind texts. </p>
-                <p><a href="single-page.html">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service left-icon probootstrap-animate">
-              <div class="icon">
-                <i class="icon-adjustments"></i>
-              </div>
-              <div class="text">
-                <h3 class="heading">Full Customization</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                  the blind texts. </p>
-                <p><a href="single-page.html">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </section>
-    <!-- END section -->
+
+        <div class="container">
+            <!-- This row is for the Event Details from the Host-->
+            <div class="row">
+                <div class="col-md-3" id="eventDetails">
+                    <h2>Event Details: </h2>
+                    <div id="tab-display"> </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <!-- <label for="eventDate">Date: </label> -->
+                        <div class="col-md-6">
+                            <label for="eventDatelb">Date: </label>
+                            <div id="event-date">
+
+                            </div>
+                            <!-- populates from firebase -->
+                        </div>
+                        <br>
+
+                        <div class="col-md-6">
+                            <label for="eventNamelb">Name: </label>
+                            <div id="event-name">
+
+                            </div>
+                            <!-- populates from firebase -->
+                        </div>
+
+                    </div>
+                </div>
+                <!-- event details row ends here -->
+                <br>
+                <hr>
+                <!-- This row is to display the movie search box to allow user to suggest-->
+            </div>
+
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <form>
+                        <hr>
+                        <div class="form-group">
+                            <label for="suggestion-input">
+                                <h1>Suggest up to 2 movies</h1>
+                            </label>
+                            <input type="text" class="form-control" id="suggestion-input" placeholder="enter search topic">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
+
+                    </form> <!-- End Form -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="movie-display">
+                    <h3>Search results: </h3>
+                </div>
+            </div>
+            <!-- row for suggestiing ends here -->
+            <hr>
+            <!-- This row is to display the movies suggested by everyone including the host-->
+            <div class="row">
+                <div class="col-md-9">
+
+                    <table class="table table-hover" id="eventMovieList">
+                        <!-- the table headings start here -->
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h1>Suggested Movies - Vote on your favorite 2</h1>
+                                </th>
+                            </tr>
 
 
-  </div>
-  <footer class="probootstrap-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason Moore <br> Joyce Nguyen, Isaac Bayon</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+                        </thead>
+                        <!-- the table headings END here -->
+                        <tbody id="saved-movies">
+                            <!-- the js code will populate this section with rows from firebase-->
 
+                        </tbody>
 
+                    </table>
 
-  <div class="gototop js-top">
-    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
-  </div>
+                    <br>
+                </div>
+                <div class="col-md-3">
+                    <div id="winner">
+                        <h3>
+                            Winner 🏆 is: id is "winner"
+                        </h3>
+                    </div>
+                </div>
 
+            </div>
+    </main>
+    <!-- Footer -->
+    <footer class="container">
+        <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason
+            Moore,
+            Joyce Nguyen, Isaac Bayon</p>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../Movie-Night/assets/js/jquery-slim.min.js"><\/script>')</script>
+    <script src="../Movie-Night/assets/js/popper.min.js"></script>
+    <script src="../Movie-Night/assets/js/bootstrap.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script src="assets/js/app.js"></script>
 
-  <script src="js/scripts.min.js"></script>
-  <script src="js/main.min.js"></script>
-  <script src="js/custom.js"></script>
-
-  <!-- Jason's working copy -->
-  <script src="js/app-test.js"></script>
-  <!-- Elizabeth's working copy -->
-  <script src="js/app.js"></script>
+   
 
 </body>
 
