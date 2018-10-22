@@ -11,8 +11,10 @@
     <title>Movie Night</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
     <link href="../Movie-Night/assets/css/style.css" rel="stylesheet">
@@ -66,10 +68,12 @@
     <main role="main">
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron">
+        <div class="jumbotron vertical-center">
             <div class="container">
-                <h1 class="display-3">Movie Night</h1>
-                <p>Your Events</p>
+                <div class="col-md-10 offset-md-4">
+                    <h1>Movie Night</h1>
+                    <p>Your Events</p>
+                </div>
             </div>
         </div>
 
@@ -78,36 +82,70 @@
             <div class="row">
                 <div class="col-md-3" id="eventDetails">
                     <h2>Event Details: </h2>
-
+                    <div id="tab-display"> </div>
                 </div>
-                <div id="tab-display">
-                    <!-- <p>tab-display div</p> -->
-                    <div class="col-md-8" id="event-date">
-                            <!-- <p> Use this ID id="event-date" to reference the Event Date from app.js </p> -->
-                        </div>
-        
-                        <div class="col-md-1" id="event-name">
-                            <!-- <p> Use this ID id="event-name" to reference the Event Name from app.js </p> -->
-                        </div>
-                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <!-- <label for="eventDate">Date: </label> -->
+                        <div class="col-md-6">
+                            <label for="eventDatelb">Date: </label>
+                            <div id="event-date">
 
-                
+                            </div>
+                            <!-- populates from firebase -->
+                        </div>
+                        <br>
+
+                        <div class="col-md-6">
+                            <label for="eventNamelb">Name: </label>
+                            <div id="event-name">
+
+                            </div>
+                            <!-- populates from firebase -->
+                        </div>
+
+                    </div>
+                </div>
+                <!-- event details row ends here -->
+                <br>
+                <hr>
+                <!-- This row is to display the movie search box to allow user to suggest-->
             </div>
-            <!-- event details row ends here -->
 
-            <!-- This row is to display the movies suggested by everyone including the host-->
+            <hr>
             <div class="row">
                 <div class="col-md-12">
+                    <form>
+                        <hr>
+                        <div class="form-group">
+                            <label for="suggestion-input">Suggest up to 2 movies</label>
+                            <input type="text" class="form-control" id="suggestion-input" placeholder="enter search topic">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
+
+                    </form> <!-- End Form -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="movie-display">
+                    <h3>Search results: </h3>
+                </div>
+            </div>
+            <!-- row for suggestiing ends here -->
+            <hr>
+            <!-- This row is to display the movies suggested by everyone including the host-->
+            <div class="row">
+                <div class="col-md-9">
 
                     <table class="table table-hover" id="eventMovieList">
                         <!-- the table headings start here -->
                         <thead>
                             <tr>
-                                <th>Movie Name</th>
-                                <th>Release Date</th>
-                                <th>Vote Up</th>
-                                <th>Vote down</th>
+                                <th>Suggested Movies - Vote on your favorite 2</th>
                             </tr>
+
+
                         </thead>
                         <!-- the table headings END here -->
                         <tbody id="saved-movies">
@@ -116,42 +154,18 @@
                         </tbody>
 
                     </table>
-                    <!-- </div id="saved-movies">
-        <p> movies apear here??</p>
-        <p>suggested Movie 2</p>
-        <p>suggested Movie 3</p>
 
-
-        </div> -->
                     <br>
-                    <hr>
-                    <!-- This row is to display the movie search box to allow user to suggest-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form>
-                                <div class="form-group">
-                                    <label for="suggestion-input">Suggest up to 3 movies</label>
-                                    <input type="text" class="form-control" id="suggestion-input" placeholder="enter search topic">
-                                </div>
-                                <button type="submit" class="btn btn-primary" id="suggestion-submit">Submit</button>
-
-                            </form> <!-- End Form -->
-                        </div>
+                </div>
+                <div class="col-md-3">
+                    <div id="winner">
+                        <h3>
+                            And the Winner is:  id is "winner"
+                        </h3>
                     </div>
+                </div>
 
-                    <hr>
-
-
-                    <div class="row">
-                        <div id="movie-display">
-                            <h3>Search results: </h3>
-                        </div>
-                    </div>
-                    <!-- row for suggestiing ends here -->
-
-                    <!-- </div> -->
-                    <!-- container ends here -->
-
+            </div>
     </main>
     <!-- Footer -->
     <footer class="container">
