@@ -233,6 +233,7 @@ $("#logout").on("click", function (event) {
       // An error happened.
     });
   })
+  
 // //-------------------- Test Info
 // var testEvent = {
 //     guests: [{
