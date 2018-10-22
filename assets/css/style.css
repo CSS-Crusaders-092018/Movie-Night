@@ -22,6 +22,7 @@ nav {
 }
 
 .jumbotron {
+    text-align: center;
  height: 175px;
  width: 550px;
   background-color: lightblue;
@@ -70,4 +71,14 @@ p
     text-align: center;
 }
 
-/* ading note to ensure this gets to dev branch wtf */ 
+.button {
+    padding-right: 10px;
+}
+
+#active {
+    background-color: aqua;
+}
+
+#hover:hover{
+    background-color: purple;
+}
