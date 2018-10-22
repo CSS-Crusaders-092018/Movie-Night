@@ -81,7 +81,17 @@ function getData(date, name, newGuests) {
     console.log(nextEvent);
 } //end getData()
 
-
+//Logout 
+$("#logout").on("click", function (event) {
+    event.preventDefault();
+    console.log("kbye")
+    firebase.auth().signOut().then(function () {
+      // Sign-out successful.
+      window.location = "index.html";
+    }, function (error) {
+      // An error happened.
+    });
+  })
 
 
 
