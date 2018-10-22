@@ -1,0 +1,72 @@
+body {
+    padding-top: 3.5rem;
+    margin-left: 45px;
+    margin-right: 45px;
+  }
+  .starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .col-md-4 {
+      border: solid 1px lightblue
+  }
+
+  .col-md-8 {
+    border: solid 1px lightblue
+}
+
+nav {
+ float: right;
+ 
+}
+
+.jumbotron {
+height: 200px;
+width: 450px;
+  background-color: lightblue;
+margin-left: 350px;
+   
+}
+
+.col-md-12 {
+    border: solid 5px orangered
+}
+  
+.col-md-6 {
+    border: solid 5px grey
+}
+
+.col-md-2
+{
+    border: solid 5px black
+}
+
+
+#rotating-item-wrapper {
+    position: relative;
+    width: 980 px;
+    height: 347 px;
+}
+.rotating-item {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+footer {
+    text-align: center;
+}
+
+img {
+    margin-top: 8px;
+}
+
+h1
+p
+ {
+    text-align: center;
+}
+
+/* ading note to ensure this gets to dev branch wtf */ 
