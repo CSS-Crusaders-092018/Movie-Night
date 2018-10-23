@@ -39,6 +39,7 @@ var database = firebase.database();
 var eventKey = "";
 var allEvents = "";
 var thisEvent = "";
+var emailReminderArray = [];
 
 //Establish first event page on load
 database.ref("/users").once("value").then(function (snap) {
@@ -84,10 +85,18 @@ function eventTabLoad(list) {
 
 //On Page Load
 function pageLoad() {
+    $("#saved-movies").empty();
     $("#event-name").text(thisEvent.eventName);
     $("#event-date").text(thisEvent.eventDate);
-    $("#saved-movies").empty();
+    
+    //Adding the email reminders
+    var tempEmailReminderArray = [];
+    for (var i = 0; i < thisEvent.guests.length; i++) {
+        tempEmailReminderArray.push(thisEvent.guests[i].name);
+    }
+    emailReminderArray = tempEmailReminderArray;
 
+    //Adding the movie suggestion list
     for (var i = 1; i < thisEvent.suggestionList.length; i++) {
         var newTitle = thisEvent.suggestionList[i].title;
         var newItem = $("<div>").addClass("suggestion-container");
@@ -109,11 +118,24 @@ function pageLoad() {
         newDropDown.hide();
         $("#saved-movies").append(newItem);
     }
-}
+
+    //Adding the Winner
+    $("#winner-display").empty();
+    var winnerWinner = 0;
+    $.each(thisEvent.suggestionList, function (key, value) {
+        if (winnerWinner < value.votes) {
+            winnerWinner = value.votes;
+            $("#winner-display").text(value.title);
+        }
+    });
+
+} //End pageLoad()
 
 // Invite Friends
 // pull list of guest emails invited and use for loop to iterate and mailto
-$("#sendInvite").on("click")
+$("#sendInvite").on("click", function () {
+
+})
 
 ///////////////////////////////////////
 //  API CALLS AND APP FUNCTIONALITY //
@@ -121,7 +143,7 @@ $("#sendInvite").on("click")
 
 //grab index of current user
 function currentUserAsGuest(guest){
-    return guest.name == currentUserId;
+    return guest.name == currentUser;
 }
 
 //Get Movie Data
