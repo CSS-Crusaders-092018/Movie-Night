@@ -98,8 +98,8 @@ function pageLoad() {
         var newTitleCard = $("<div>").addClass("list-item");
         var titleTitle = $("<h3>").addClass("list-title").attr("data-item", i).attr("data-hidden", "true").text(newTitle);
         newTitleCard.append(titleTitle);
-        var upVoteButton = $("<button>").addClass("upvote").attr("data-item", i).text("+");
-        var downVoteButton = $("<button>").addClass("downvote").attr("data-item", i).text("-");
+        var upVoteButton = $("<img>").addClass("upvote").attr("data-item", i).attr("src", "assets/images/thumbs-up-32.png");
+        var downVoteButton = $("<img>").addClass("downvote").attr("data-item", i).attr("src", "assets/images/thumbs-down-32.png");
         newTitleCard.append(upVoteButton, downVoteButton);
 
         var newDropDown = $("<div>").addClass("suggestion-info movie-" + i).attr("data-title", newTitle).attr("data-item", i);
