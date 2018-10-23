@@ -41,12 +41,12 @@ var currentUser = "";
 ////////////////////////////////
 /////////////////////////////////
 var userData = "";
+var eventKey = "";
 //Establish first event page on load
 database.ref("/users").once("value").then(function (snap) {
     userData = snap.val();
 })
 
-console.log(userData);
 
 $(document).on("click", "#event-submit", function (event) {
     event.preventDefault();
@@ -55,9 +55,10 @@ $(document).on("click", "#event-submit", function (event) {
     var guests = $("#inviteeEmail").val().trim();
 
     var guestArray = guests.split(",");
-    getData(eventDate, eventName, guestArray)
+    getData(eventDate, eventName, guestArray);
+    console.log(guestArray);
+    updateUsers(guestArray);
 })
-
 
 function getData(date, name, newGuests) {
     var nextEvent = {
@@ -78,20 +79,51 @@ function getData(date, name, newGuests) {
             downVotesRemaining: 3
         })
     }
-    console.log(nextEvent);
+    database.ref("/events").push(nextEvent);
+    database.ref("/events/").once("child_added", function (snapshot) {
+        eventKey = snapshot.key;
+    })
+
 } //end getData()
+
+function updateUsers(array) {
+    console.log(array);
+    var exisitingEmailArray = [];
+
+    $.each(userData, function (key, value) {
+        for (var i = 0; i < array.length; i++) {
+            if (value.email == array[i].trim()) {
+                database.ref("/users/" + key + "/events").push(eventKey);
+                console.log(eventKey);
+            }
+        }
+    });
+    // $.each(userData, function (key, value) {
+    //     // exisitingEmailArray.push(value.email);
+    //     console.log("userData: " + value.email)
+    //     // console.log(value);
+
+    // });
+    // for (var i = 0; i < array.length; i++) {
+    //     if (exisitingEmailArray.includes(array[i])) {
+    //         console.log("it's including");
+    //         userData[array[i]].events.push(eventKey);
+    //     }
+    // }
+
+}
 
 //Logout 
 $("#logout").on("click", function (event) {
     event.preventDefault();
     console.log("kbye")
     firebase.auth().signOut().then(function () {
-      // Sign-out successful.
-      window.location = "index.html";
+        // Sign-out successful.
+        window.location = "index.html";
     }, function (error) {
-      // An error happened.
+        // An error happened.
     });
-  })
+})
 
 // use firebase list of actors to select from users already in database
 // can we use Firebase transaction - join state usable for this event?
