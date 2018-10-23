@@ -2,6 +2,7 @@ body {
     /*padding-top: 3.5rem;*/
     margin-left: 45px;
     margin-right: 45px;
+    
   }
   .starter-template {
     padding: 3rem 1.5rem;
@@ -22,11 +23,11 @@ nav {
 }
 
 .jumbotron {
+    background-color: lightblue;
+    /*margin-left: 350px;*/
     text-align: center;
- height: 175px;
- width: 550px;
-  background-color: lightblue;
-margin-left: 350px;
+    
+    
    
 }
 
