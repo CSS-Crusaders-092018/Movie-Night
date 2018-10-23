@@ -28,6 +28,8 @@ nav {
     background-position: center;
     background-size: cover;
     color: #fff;
+    font-family: 'Saira', sans-serif;
+    font-weight: bold;
     /*margin-left: 350px;*/
     opacity: .9;
     text-align: center;
@@ -107,4 +109,10 @@ p
 
 .btn-primary {
     background-color: #bcc6cc;
+    border: #bcc6cc;
+
+}
+
+.btn-primary:hover {
+    background-color: #9fadb6;
 }
