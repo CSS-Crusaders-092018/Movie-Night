@@ -16,6 +16,7 @@ firebase.initializeApp(config);
 /////////////////////////////////
 
 var currentUser = "";
+var currentUserId = "";
 // //Handle Account Status
 (function initApp() {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -28,7 +29,8 @@ var currentUser = "";
             // var isAnonymous = user.isAnonymous;
             // var uid = user.uid;
             // var providerData = user.providerData;
-            currentUser = user.uid;
+            currentUser = user.email;
+            currentUserId = user.uid;
 
         } else {
             // User is signed out.
@@ -50,7 +52,7 @@ var thisEvent = "";
 //Establish first event page on load
 database.ref("/users").once("value").then(function (snap) {
     snap.forEach(function (child) {
-        if (child.key === currentUser) {
+        if (child.key === currentUserId) {
             var eventList = child.val().events;
             setThisEvent(eventList[1])
             eventTabLoad(eventList);
@@ -62,8 +64,9 @@ database.ref("/events").once("value").then(function (snap) {
     setAllEvents(snap.val());
 })
 
-database.ref("/events/" + thisEvent).on("child_changed", function (snapshot) {
+database.ref("/events/" + eventKey).on("child_changed", function (snapshot) {
     console.log(snapshot.val())
+    thisEvent = snapshot.val();
     pageLoad();
 })
 
@@ -79,8 +82,9 @@ function setAllEvents(eventObject) {
 
 function eventTabLoad(list) {
     var eventList = list;
+    console.log(list);
     for (var i = 1; i < eventList.length; i++) {
-        var newTab = $("<button>").addClass("tab-button").attr("data-tab", eventList[i]).text("Tab " + i);
+        var newTab = $("<button>").addClass("tab-button").attr("data-tab", eventList[i]).text("Event " + i);
         $("#tab-display").append(newTab);
     } //end For
 }
@@ -98,8 +102,8 @@ function pageLoad() {
         var newTitleCard = $("<div>").addClass("list-item");
         var titleTitle = $("<h3>").addClass("list-title").attr("data-item", i).attr("data-hidden", "true").text(newTitle);
         newTitleCard.append(titleTitle);
-        var upVoteButton = $("<button>").addClass("upvote").attr("data-item", i).text("+");
-        var downVoteButton = $("<button>").addClass("downvote").attr("data-item", i).text("-");
+        var upVoteButton = $("<img>").addClass("upvote").attr("data-item", i).attr("src", "assets/images/thumbs-up-32.png");
+        var downVoteButton = $("<img>").addClass("downvote").attr("data-item", i).attr("src", "assets/images/thumbs-down-32.png");
         newTitleCard.append(upVoteButton, downVoteButton);
 
         var newDropDown = $("<div>").addClass("suggestion-info movie-" + i).attr("data-title", newTitle).attr("data-item", i);
@@ -114,9 +118,18 @@ function pageLoad() {
     }
 }
 
+// Invite Friends
+// pull list of guest emails invited and use for loop to iterate and mailto
+$("#sendInvite").on("click")
+
 ///////////////////////////////////////
 //  API CALLS AND APP FUNCTIONALITY //
 /////////////////////////////////////
+
+//grab index of current user
+function currentUserAsGuest(guest){
+    return guest.name == currentUserId;
+}
 
 //Get Movie Data
 function getMovieData(movie) {
@@ -144,13 +157,13 @@ $("#suggestion-submit").on("click", function (event) {
 $(document).on("click", ".search-result", function () {
     var newMovie = $(this).attr("data-title");
     var newId = $(this).attr("data-id");
-
+    console.log(thisEvent.guests.find(currentUserAsGuest).suggestions);
     var newQuery = "https://www.omdbapi.com/?apikey=168f295&i=" + newId + "&type&y=&plot=short"
     $.ajax({
         url: newQuery,
         method: "GET"
     }).then(function (response) {
-        if (thisEvent.guests[0].suggestions.length < thisEvent.suggestionCap) {
+        if (thisEvent.guests.find(currentUserAsGuest).suggestions.length < thisEvent.suggestionCap) {
             var newSuggestion = {
                 title: response.Title,
                 poster: response.Poster,
@@ -159,7 +172,7 @@ $(document).on("click", ".search-result", function () {
                 metascore: response.Metascore,
                 votes: 0
             }
-            thisEvent.guests[0].suggestions.push(newMovie);
+            thisEvent.guests.find(currentUserAsGuest).suggestions.push(newMovie);
             thisEvent.suggestionList.push(newSuggestion);
             database.ref("/events/" + eventKey).set(thisEvent);
 
@@ -186,11 +199,11 @@ $(document).on("click", ".list-title", function () {
 
 //Vote Buttons
 $(document).on("click", ".upvote", function () {
-    if (thisEvent.guests[0].upVotesRemaining > 0) {
+    if (thisEvent.guests.find(currentUserAsGuest).upVotesRemaining > 0) {
 
         var whichMovie = $(this).attr("data-item");
         thisEvent.suggestionList[whichMovie].votes++;
-        thisEvent.guests[0].upVotesRemaining--;
+        thisEvent.guests.find(currentUserAsGuest).upVotesRemaining--;
         database.ref("/events/" + eventKey).set(thisEvent);
     } else {
         alert("You're out of UpVotes");
@@ -199,11 +212,11 @@ $(document).on("click", ".upvote", function () {
 }) //end UpVoteButton
 
 $(document).on("click", ".downvote", function () {
-    if (thisEvent.guests[0].downVotesRemaining > 0) {
+    if (thisEvent.guests.find(currentUserAsGuest).downVotesRemaining > 0) {
 
         var whichMovie = $(this).attr("data-item");
         thisEvent.suggestionList[whichMovie].votes--;
-        thisEvent.guests[0].downVotesRemaining--;
+        thisEvent.guests.find(currentUserAsGuest).downVotesRemaining--;
         database.ref("/events/" + eventKey).set(thisEvent);
     } else {
         alert("You're out of Down Votes");

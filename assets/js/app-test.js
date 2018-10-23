@@ -138,6 +138,10 @@ $("#suggestion-submit").on("click", function (event) {
     getMovieData(title);
 })
 
+function currentUserAsGuest(guest){
+    return guest.name == currentUser;
+}
+
 //Adding a movie to the list
 $(document).on("click", ".search-result", function () {
     var newMovie = $(this).attr("data-title");
@@ -148,7 +152,7 @@ $(document).on("click", ".search-result", function () {
         url: newQuery,
         method: "GET"
     }).then(function (response) {
-        if (thisEvent.guests[0].suggestions.length < thisEvent.suggestionCap) {
+        if (thisEvent.guests.find(currentUserAsGuest).suggestions.length < thisEvent.suggestionCap) {
             var newSuggestion = {
                 title: response.Title,
                 poster: response.Poster,

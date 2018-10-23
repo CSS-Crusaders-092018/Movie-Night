@@ -1,20 +1,22 @@
 body {
-    padding-top: 3.5rem;
+    /*padding-top: 3.5rem;*/
     margin-left: 45px;
     margin-right: 45px;
+    
   }
   .starter-template {
     padding: 3rem 1.5rem;
     text-align: center;
   }
 
-  .col-md-4 {
+  .col-md-4, 
+  .col-md-3, 
+  .col-md-8, 
+  .col-md-9 {
       border: solid 1px lightblue
   }
 
-  .col-md-8 {
-    border: solid 1px lightblue
-}
+
 
 nav {
  float: right;
@@ -22,21 +24,21 @@ nav {
 }
 
 .jumbotron {
- height: 175px;
- width: 550px;
-  background-color: lightblue;
-margin-left: 350px;
+    background-image: url("../images/maxresdefault.jpg");
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    font-family: 'Saira', sans-serif;
+    font-weight: bold;
+    /*margin-left: 350px;*/
+    opacity: .9;
+    text-align: center;
    
 }
-
-
-.col-md-3 {
-    border: solid 5px orangered
-}
   
-.col-md-6 {
+/* .col-md-6 {
     border: solid 5px grey
-}
+} */
 
 .col-md-2
 {
@@ -70,4 +72,47 @@ p
     text-align: center;
 }
 
-/* ading note to ensure this gets to dev branch wtf */ 
+.button {
+    padding-right: 10px;
+}
+
+#active {
+    background-color: aqua;
+}
+
+
+.list-title {
+    display: inline;
+    line-height: 2em;
+}
+
+.upvote, .downvote {
+    height: 20px;
+    width: 20px;
+    margin: 0 0 10px 15px;
+    
+}
+
+.upvote:hover, .downvote:hover {
+    color: yellow;
+}
+    
+
+
+.poster-img {
+    height: 300px;
+}
+
+.suggestion-info p {
+    line-height: 100%;
+}
+
+.btn-primary {
+    background-color: #bcc6cc;
+    border: #bcc6cc;
+
+}
+
+.btn-primary:hover {
+    background-color: #9fadb6;
+}
