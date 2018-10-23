@@ -12,14 +12,15 @@
 
     <!-- Bootstrap core CSS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
-    
-        <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Saira" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
     <link href="../Movie-Night/assets/css/style.css" rel="stylesheet">
     <!-- <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script> -->
 </head>
@@ -79,21 +80,22 @@
                             <!-- populates from firebase -->
                         </div>
                         <div class="col-md-4">
-                            <a href="mailto:emadamczyk@hotmail.com?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first."><button type="submit" class="btn btn-primary" id="sendInvite">Invite Friends</button></a>
-                
-    
-                            </div>
-                        <br>       
-                        </div>
-                            
+                            <a href="mailto:emadamczyk@hotmail.com?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first."><button
+                                    type="submit" class="btn btn-primary" id="sendInvite">Invite Friends</button></a>
 
+
+                        </div>
+                        <br>
                     </div>
+
+
                 </div>
-                <!-- event details row ends here -->
-                <br>
-                <hr>
-                <!-- This row is to display the movie search box to allow user to suggest-->
             </div>
+            <!-- event details row ends here -->
+            <br>
+            <hr>
+            <!-- This row is to display the movie search box to allow user to suggest-->
+
 
             <hr>
             <div class="row">
@@ -102,7 +104,7 @@
                         <hr>
                         <div class="form-group">
                             <label for="suggestion-input">
-                                <h1>Suggest up to 2 movies</h1>
+                                <h2>Suggest up to 2 movies</h2>
                             </label>
                             <input type="text" class="form-control" id="suggestion-input" placeholder="enter search topic">
                         </div>
@@ -128,7 +130,7 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <h1>Suggested Movies - Vote on your favorite 2</h1>
+                                    <h2>Suggested Movies - Vote on your favorite 2</h2>
                                 </th>
                             </tr>
 
@@ -146,9 +148,9 @@
                 </div>
                 <div class="col-md-3">
                     <div id="winner">
-                        <h3>
-                            Winner 🏆 is: 
-                        </h3>
+                        <h4>
+                            Winner 🏆 is:
+                        </h4>
                         <div id="winner-display"></div>
                     </div>
                 </div>
@@ -158,22 +160,22 @@
     </main>
     <!-- Footer -->
     <footer class="container">
-        <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason
-            Moore,
-            Joyce Nguyen, Isaac Bayon</p>
+        <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason Moore, Joyce Nguyen, Isaac Bayon</p>
     </footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
- <!-- Placed at the end of the document so the pages load faster -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
- 
- <!-- Firebase -->
- <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
- <script src="./assets/js/app.js"></script>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script src="./assets/js/app.js"></script>
 
 
 </body>
