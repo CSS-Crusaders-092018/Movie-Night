@@ -23,8 +23,12 @@ nav {
 }
 
 .jumbotron {
-    background-color: lightblue;
+    background-image: url("../images/maxresdefault.jpg");
+    background-position: center;
+    background-size: cover;
+    color: #fff;
     /*margin-left: 350px;*/
+    opacity: .9;
     text-align: center;
     
     
