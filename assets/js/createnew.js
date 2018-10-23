@@ -52,7 +52,7 @@ $(document).on("click", "#event-submit", function (event) {
 function getData(date, name, newGuests) {
     var nextEvent = {
         guests: [],
-        suggestionCap: 4,
+        suggestionCap: 3,
         eventDate: date,
         eventName: name,
         suggestionList: [

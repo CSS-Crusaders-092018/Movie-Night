@@ -46,7 +46,7 @@ database.ref("/users").once("value").then(function (snap) {
     snap.forEach(function (child) {
         if (child.key === currentUserId) {
             var eventList = child.val().events;
-            setThisEvent(eventList[1])
+            setThisEvent(eventList)
             eventTabLoad(eventList);
         } //end If
     }) //end forEach()
@@ -62,7 +62,11 @@ database.ref("/events/" + eventKey).on("child_changed", function (snapshot) {
 })
 
 function setThisEvent(eventItem) {
-    eventKey = eventItem;
+    var tempEventArray = [];
+    $.each(eventItem, function (key, value) {
+        tempEventArray.push(value);
+     });
+     eventKey = tempEventArray[1];
 }
 
 function setAllEvents(eventObject) {
@@ -154,6 +158,7 @@ function getMovieData(movie) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        $("#movie-display").append("<h3>Search results: </h3>");
         for (var i = 0; i < response.results.length; i++) {
             var newMovie = $("<p>").addClass("search-result").attr("data-id", response.results[i].imdb).attr("data-title", response.results[i].title).text(response.results[i].title + ", " + response.results[i].release_year);
             $("#movie-display").append(newMovie);
@@ -212,6 +217,7 @@ $(document).on("click", ".list-title", function () {
 
 //Vote Buttons
 $(document).on("click", ".upvote", function () {
+    $("#movie-display").empty();
     if (thisEvent.guests.find(currentUserAsGuest).upVotesRemaining > 0) {
 
         var whichMovie = $(this).attr("data-item");
@@ -219,20 +225,18 @@ $(document).on("click", ".upvote", function () {
         thisEvent.guests.find(currentUserAsGuest).upVotesRemaining--;
         database.ref("/events/" + eventKey).set(thisEvent);
     } else {
-        $("#movie-display").empty();
         $("#movie-display").append("You've entered enough, haven't you?");
     }
 }) //end UpVoteButton
 
 $(document).on("click", ".downvote", function () {
+    $("#movie-display").empty();
     if (thisEvent.guests.find(currentUserAsGuest).downVotesRemaining > 0) {
-
         var whichMovie = $(this).attr("data-item");
         thisEvent.suggestionList[whichMovie].votes--;
         thisEvent.guests.find(currentUserAsGuest).downVotesRemaining--;
         database.ref("/events/" + eventKey).set(thisEvent);
     } else {
-        $("#movie-display").empty();
         $("#movie-display").append("You've entered enough, haven't you?");
     }
 }) //end DownVoteButton
