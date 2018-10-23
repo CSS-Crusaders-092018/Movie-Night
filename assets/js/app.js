@@ -117,6 +117,10 @@ function pageLoad() {
     }
 }
 
+// Invite Friends
+// pull list of guest emails invited and use for loop to iterate and mailto
+$("#sendInvite").on("click")
+
 ///////////////////////////////////////
 //  API CALLS AND APP FUNCTIONALITY //
 /////////////////////////////////////
