@@ -86,8 +86,7 @@ p
 
 .list-title {
     display: inline;
-    
-    margin-bottom: 30px;
+    line-height: 2em;
 }
 
 .upvote, .downvote {
@@ -95,4 +94,12 @@ p
     width: 20px;
     margin: 0 0 10px 15px;
     
+}
+
+.poster-img {
+    height: 300px;
+}
+
+.suggestion-info p {
+    line-height: 100%;
 }
