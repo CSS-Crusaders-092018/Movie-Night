@@ -126,9 +126,6 @@ function currentUserAsGuest(guest){
     return guest.name == currentUserId;
 }
 
-console.log(thisEvent);
-// console.log(thisEvent.guest.find(currentUserAsGuest));
-
 //Get Movie Data
 function getMovieData(movie) {
     var queryURL = "https://api-public.guidebox.com/v2/search?api_key=784a0a8429f1789c7473e19007cce274f76df272&type=movie&field=title&query=" + movie;
@@ -161,11 +158,6 @@ $(document).on("click", ".search-result", function () {
         url: newQuery,
         method: "GET"
     }).then(function (response) {
-        var j = 1;
-        for (j = 1; j > thisEvent.guests.length; i++) {
-
-        }
-//indexOf(); .find()
         if (thisEvent.guests.find(currentUserAsGuest).suggestions.length < thisEvent.suggestionCap) {
             var newSuggestion = {
                 title: response.Title,
