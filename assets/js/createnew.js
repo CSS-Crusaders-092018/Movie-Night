@@ -31,7 +31,6 @@ var currentUser = "";
 
         } else {
             // User is signed out.
-            console.log("signed out");
             // ...
         }
     });
@@ -47,7 +46,6 @@ database.ref("/users").once("value").then(function (snap) {
     userData = snap.val();
 })
 
-
 $(document).on("click", "#event-submit", function (event) {
     event.preventDefault();
     var eventDate = $("#newEventDate").val().trim();
@@ -56,8 +54,8 @@ $(document).on("click", "#event-submit", function (event) {
 
     var guestArray = guests.split(",");
     getData(eventDate, eventName, guestArray);
-    console.log(guestArray);
     updateUsers(guestArray);
+    window.location = "event.html";
 })
 
 function getData(date, name, newGuests) {
@@ -87,30 +85,13 @@ function getData(date, name, newGuests) {
 } //end getData()
 
 function updateUsers(array) {
-    console.log(array);
-    var exisitingEmailArray = [];
-
     $.each(userData, function (key, value) {
         for (var i = 0; i < array.length; i++) {
             if (value.email == array[i].trim()) {
                 database.ref("/users/" + key + "/events").push(eventKey);
-                console.log(eventKey);
             }
         }
     });
-    // $.each(userData, function (key, value) {
-    //     // exisitingEmailArray.push(value.email);
-    //     console.log("userData: " + value.email)
-    //     // console.log(value);
-
-    // });
-    // for (var i = 0; i < array.length; i++) {
-    //     if (exisitingEmailArray.includes(array[i])) {
-    //         console.log("it's including");
-    //         userData[array[i]].events.push(eventKey);
-    //     }
-    // }
-
 }
 
 //Logout 
@@ -129,47 +110,3 @@ $("#logout").on("click", function (event) {
 // can we use Firebase transaction - join state usable for this event?
 // use Firebase invitations?
 // EA created dynamic link : https://movienight.page.link and added whitelist url
-
-
-// //-------------------- Test Info
-// var testEvent = {
-//     guests: [{
-//         name: "Jason",
-//         suggestions: ["empty"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }, {
-//         name: "Joyce",
-//         suggestions: ["empty", "Avatar", "Titanic", "Terminator 2"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }, {
-//         name: "Isaac",
-//         suggestions: ["empty", "ET", "Hook", "Jurassic Park"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }, {
-//         name: "Elizabeth",
-//         suggestions: ["empty", "The Shining", "Spartacus", "Full Metal Jacket"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }
-//     ],
-//     suggestionCap: 4,
-//     eventDate: "Event 3",
-//     eventName: "Third Event",
-//     suggestionList: [
-//         "empty",
-//         {
-//             title: "Batman",
-//             poster: "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
-//             year: 1980,
-//             plot: "Jack Nicholson goes hard on his fam.",
-//             votes: 0
-//         }
-//     ]
-// }
-
-// database.ref("/events").push(testEvent);
-
-// });

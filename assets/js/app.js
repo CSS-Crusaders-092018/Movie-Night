@@ -81,10 +81,14 @@ function setAllEvents(eventObject) {
 }
 
 function eventTabLoad(list) {
-    var eventList = list;
-    console.log(list);
-    for (var i = 1; i < eventList.length; i++) {
-        var newTab = $("<button>").addClass("tab-button").attr("data-tab", eventList[i]).text("Event " + i);
+    var eventArray = [];
+    $.each(list, function (key, value) {
+        eventArray.push(value);
+    });
+    console.log(eventArray);
+
+    for (var i = 1; i < eventArray.length; i++) {
+        var newTab = $("<button>").addClass("tab-button").attr("data-tab", eventArray[i]).text("Event " + i);
         $("#tab-display").append(newTab);
     } //end For
 }
