@@ -91,6 +91,12 @@ p
     
 }
 
+.upvote:hover, .downvote:hover {
+    color: yellow;
+}
+    
+
+
 .poster-img {
     height: 300px;
 }
