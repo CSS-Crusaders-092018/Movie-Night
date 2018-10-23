@@ -21,20 +21,11 @@ var currentUserId = "";
 (function initApp() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            //User is signed in.
-            // var displayName = user.displayName;
-            // var email = user.email;
-            // var emailVerified = user.emailVerified;
-            // var photoURL = user.photoURL;
-            // var isAnonymous = user.isAnonymous;
-            // var uid = user.uid;
-            // var providerData = user.providerData;
             currentUser = user.email;
             currentUserId = user.uid;
 
         } else {
             // User is signed out.
-            console.log("signed out");
             // ...
         }
     });
@@ -65,7 +56,6 @@ database.ref("/events").once("value").then(function (snap) {
 })
 
 database.ref("/events/" + eventKey).on("child_changed", function (snapshot) {
-    console.log(snapshot.val())
     thisEvent = snapshot.val();
     pageLoad();
 })
@@ -85,7 +75,6 @@ function eventTabLoad(list) {
     $.each(list, function (key, value) {
         eventArray.push(value);
     });
-    console.log(eventArray);
 
     for (var i = 1; i < eventArray.length; i++) {
         var newTab = $("<button>").addClass("tab-button").attr("data-tab", eventArray[i]).text("Event " + i);
@@ -138,7 +127,7 @@ function currentUserAsGuest(guest){
 //Get Movie Data
 function getMovieData(movie) {
     var queryURL = "https://api-public.guidebox.com/v2/search?api_key=784a0a8429f1789c7473e19007cce274f76df272&type=movie&field=title&query=" + movie;
-
+    
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -161,7 +150,6 @@ $("#suggestion-submit").on("click", function (event) {
 $(document).on("click", ".search-result", function () {
     var newMovie = $(this).attr("data-title");
     var newId = $(this).attr("data-id");
-    console.log(thisEvent.guests.find(currentUserAsGuest).suggestions);
     var newQuery = "https://www.omdbapi.com/?apikey=168f295&i=" + newId + "&type&y=&plot=short"
     $.ajax({
         url: newQuery,
@@ -181,8 +169,7 @@ $(document).on("click", ".search-result", function () {
             database.ref("/events/" + eventKey).set(thisEvent);
 
         } else {
-            alert("You've entered enough, haven't you?");
-            //TODO Delete Alert Prompts
+            $("#movie-display").append("You've entered enough, haven't you?");
         }
 
     }) //end AJAX 
@@ -210,8 +197,8 @@ $(document).on("click", ".upvote", function () {
         thisEvent.guests.find(currentUserAsGuest).upVotesRemaining--;
         database.ref("/events/" + eventKey).set(thisEvent);
     } else {
-        alert("You're out of UpVotes");
-        //TODO Delete Alert Prompts
+        $("#movie-display").empty();
+        $("#movie-display").append("You've entered enough, haven't you?");
     }
 }) //end UpVoteButton
 
@@ -223,8 +210,8 @@ $(document).on("click", ".downvote", function () {
         thisEvent.guests.find(currentUserAsGuest).downVotesRemaining--;
         database.ref("/events/" + eventKey).set(thisEvent);
     } else {
-        alert("You're out of Down Votes");
-        //TODO Delete Alert Prompts
+        $("#movie-display").empty();
+        $("#movie-display").append("You've entered enough, haven't you?");
     }
 }) //end DownVoteButton
 
@@ -235,7 +222,6 @@ $(document).on("click", ".tab-button", function () {
         thisEvent = snap.val();
         eventKey = snap.key;
     })
-    console.log(whichTab);
     pageLoad();
 })
 
@@ -251,7 +237,9 @@ $("#logout").on("click", function (event) {
     });
   })
   
-// //-------------------- Test Info
+///////////////////////////////////////
+//////   Test Info   /////////////////
+/////////////////////////////////////
 // var testEvent = {
 //     guests: [{
 //         name: "Jason",
