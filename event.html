@@ -6,15 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/assets/images/film-favicon.ico">
+    <link rel="icon" href="../Movie-Night/assets/images/film-favicon.ico">
 
-    <title>Movie Night</title>
+    <title>Movie Night - Events</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link href="../Movie-Night/assets/css/style.css" rel="stylesheet">
@@ -25,29 +22,29 @@
 
 <body>
 
-    <header role="banner" class="probootstrap-header">
-        <div class="container">
-            <a href="index.html" class="probootstrap-logo"></a>
-            <nav role="navigation" class="probootstrap-nav hidden-xs">
-                <ul class="probootstrap-main-nav">
-                    <a href="index.html">Home</a>
-                    <a class="active"><a href="event.html">Events</a>
-                        <a href="about.html">About</a>
-                        <!-- the logout is not working- Sunday 10.21 11:53 PM. ib FIXED: MON, 1:25AM EA-->
-                        <a href="index.html" id="logout">Log Out</a></li>
-                </ul>
-        </div>
-    </header>
+    <ul class="nav justify-content-end">
+        
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="event.html">Events</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+            <a href="index.html" id="logout">Log Out</a></li>
+        </li>
+    </ul>
 
     <main role="main">
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron vertical-center">
-            <div class="container">
-                <div class="col-md-10 offset-md-4">
-                    <h1>Movie Night</h1>
-                    <p>Your Events</p>
-                </div>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Movie Night</h1>
+                <p>Your Events</p>
             </div>
         </div>
 
@@ -144,6 +141,7 @@
                 </div>
 
             </div>
+        </div>
     </main>
     <!-- Footer -->
     <footer class="container">
@@ -162,7 +160,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
     <script src="assets/js/app.js"></script>
 
-   
+
 
 </body>
 
