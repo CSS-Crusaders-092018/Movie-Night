@@ -82,7 +82,7 @@ function eventTabLoad(list) {
     });
 
     for (var i = 1; i < eventArray.length; i++) {
-        var newTab = $("<button>").addClass("tab-button btn btn-light").attr("data-tab", eventArray[i]).text("Event " + i);
+        var newTab = $("<button>").addClass("tab-button btn btn-secondary").attr("data-tab", eventArray[i]).text("Event " + i);
         $("#tab-display").append(newTab);
     } //end For
 }
