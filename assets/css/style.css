@@ -1,6 +1,6 @@
 html {
     position: relative;
-    min-height: 100%
+    min-height: 100%;
 }
 
 body {
@@ -69,16 +69,17 @@ nav {
 }
 
 footer {
-    background-color: #9fadb6;
+    background-color: #bcc6cc;
     bottom: 0;
     font-family: 'Saira', sans-serif;
     font-size: .7em;
     height: 90px;
-    margin-top: 30px;
+    margin-top: 20px;
     padding-top: 30px;
     position: absolute;
     overflow: hidden;
     text-align: center;
+    width: 100%;
 }
 
 img {
@@ -174,9 +175,9 @@ p
     text-align: center;
 }
 
-ul {
+/*ul {
     margin-right: 80px;
-}
+}*/
 
 #winner-display {
     color: #008000;
