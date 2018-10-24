@@ -144,8 +144,6 @@ p
 #reminders {
     font-family: 'Saira', sans-serif;
     font-size: 1.2em;
-    position: absolute;
-    bottom: 0;
 }
 
 .btn-secondary {
