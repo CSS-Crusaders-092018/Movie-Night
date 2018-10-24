@@ -100,7 +100,6 @@ p
     background-color: aqua;
 }
 
-
 .list-title {
     display: inline;
     line-height: 2em;
@@ -179,6 +178,13 @@ p
     margin-right: 80px;
 }*/
 
+
 #winner-display {
     color: #008000;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
 }
