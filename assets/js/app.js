@@ -135,9 +135,10 @@ function pageLoad() {
 
 } //End pageLoad()
 
-// Invite Friends
+// Invite Friends - <a href="mailto:emadamczyk@hotmail.com?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first."></a>
 // pull list of guest emails invited and use for loop to iterate and mailto
 $("#sendInvite").on("click", function () {
+    console.log("invite who?")
 
 })
 
