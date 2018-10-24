@@ -91,6 +91,7 @@ function eventTabLoad(list) {
 function pageLoad() {
     $("#saved-movies").empty();
     $("#email-display").empty();
+    $("#winner-display").empty();
     $("#email-display").hide();
     $("#event-name").text(thisEvent.eventName);
     $("#event-date").text(thisEvent.eventDate);
