@@ -101,12 +101,13 @@ function pageLoad() {
         var whichEmail = thisEvent.guests[i].name;
         emailReminderArray.push(whichEmail);
         var newEmail = $("<p>").addClass("email-item").attr("data-email", whichEmail).text(whichEmail);
-        $("#email-display").append(newEmail);
-
-        var newButton = $("<button>").addClass("reminder-button btn btn-primary").attr("data-email", whichEmail).text("Reminder");
+        
+        // var newButton = $("<button>").addClass("reminder-button btn btn-primary").attr("data-email", whichEmail).text("Reminder");
         var newLink = $("<a>").attr("href", "mailto:" + whichEmail + "?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first.").addClass("reminder-link")
-        newLink.append(newButton);
-        $("#email-display").append(newLink);
+        newLink.text("Reminder");
+        newEmail.append(newLink);
+
+        $("#email-display").append(newEmail);
     }
 
     //Adding the movie suggestion list
@@ -130,6 +131,9 @@ function pageLoad() {
         newItem.append(newTitleCard, newDropDown);
         newDropDown.hide();
         $("#saved-movies").append(newItem);
+        
+        var blerg = (emailReminderArray.length * 2) - i;
+        $("#suggestion-list").html("<h2>Suggested Movies - Vote 2 Up and 2 Down</h2><h5>(Note: There are still " + blerg + " movies that need to be suggested.)")
     }
 
     //Adding the Winner
@@ -261,6 +265,7 @@ $(document).on("click", ".tab-button", function () {
     pageLoad();
 })
 
+//Send Reminder Emails to guests
 $("#reminders").on("click", function (event) {
     event.preventDefault();
     if ($(this).attr("data-shown") === "false") {
@@ -283,48 +288,5 @@ $("#logout").on("click", function (event) {
       // An error happened.
     });
   })
-  
-///////////////////////////////////////
-//////   Test Info   /////////////////
-/////////////////////////////////////
-// var testEvent = {
-//     guests: [{
-//         name: "Jason",
-//         suggestions: ["empty"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }, {
-//         name: "Joyce",
-//         suggestions: ["empty", "Avatar", "Titanic", "Terminator 2"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }, {
-//         name: "Isaac",
-//         suggestions: ["empty", "ET", "Hook", "Jurassic Park"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }, {
-//         name: "Elizabeth",
-//         suggestions: ["empty", "The Shining", "Spartacus", "Full Metal Jacket"],
-//         upVotesRemaining: 3,
-//         downVotesRemaining: 3
-//     }
-//     ],
-//     suggestionCap: 4,
-//     eventDate: "Event 3",
-//     eventName: "Third Event",
-//     suggestionList: [
-//         "empty",
-//         {
-//             title: "Batman",
-//             poster: "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
-//             year: 1980,
-//             plot: "Jack Nicholson goes hard on his fam.",
-//             votes: 0
-//         }
-//     ]
-// }
-
-// database.ref("/events").push(testEvent);
 
 // });
