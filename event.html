@@ -17,7 +17,7 @@
         crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Saira" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Saira" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -79,11 +79,11 @@
                             </div>
                             <!-- populates from firebase -->
                         </div>
-                        <div class="col-md-4">
-                            <a href="mailto:emadamczyk@hotmail.com?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first."><button
-                                    type="submit" class="btn btn-primary" id="sendInvite">Invite Friends</button></a>
-
-
+                        <div class="col-md-4 email-stuff">
+                            <!-- <a href="mailto:emadamczyk@hotmail.com?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first."> -->
+                                    <button class="btn btn-primary" id="reminders" data-shown="false">Remind Friends</button>
+                                    <!-- </a> -->
+                            <div id="email-display"></div>
                         </div>
                         <br>
                     </div>
@@ -160,7 +160,8 @@
     </main>
     <!-- Footer -->
     <footer class="container">
-        <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason Moore, Joyce Nguyen, Isaac Bayon</p>
+        <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason
+            Moore, Joyce Nguyen, Isaac Bayon</p>
     </footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
