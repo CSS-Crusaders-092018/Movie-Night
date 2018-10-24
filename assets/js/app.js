@@ -91,6 +91,7 @@ function eventTabLoad(list) {
 function pageLoad() {
     $("#saved-movies").empty();
     $("#email-display").empty();
+    $("#winner-display").empty();
     $("#email-display").hide();
     $("#event-name").text(thisEvent.eventName);
     $("#event-date").text(thisEvent.eventDate);
@@ -103,8 +104,8 @@ function pageLoad() {
         var newEmail = $("<p>").addClass("email-item").attr("data-email", whichEmail).text(whichEmail);
 
         // var newButton = $("<button>").addClass("reminder-button btn btn-primary").attr("data-email", whichEmail).text("Reminder");
-        var newLink = $("<a>").attr("href", "mailto:" + whichEmail + "?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first.").addClass("reminder-link")
-        newLink.text("Reminder");
+        var newLink = $("<a>").attr("href", "mailto:" + whichEmail + "?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first.").addClass("reminder-link");
+        newLink.text("Remind");
         newEmail.append(newLink);
 
         $("#email-display").append(newEmail);
