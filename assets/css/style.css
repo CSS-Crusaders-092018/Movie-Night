@@ -127,17 +127,39 @@ p
     border: #bcc6cc;
 }
 
-.btn-secondary {
-    background-color: #c3073f;
-    color: #bcc6cc
+.tab-button {
+    font-family: 'Saira', sans-serif;
+    margin-right: 5px;
 }
 
-.btn-secondary:hover {
-    background-color: #6f2232;
+#reminders {
+    font-family: 'Saira', sans-serif;
+    font-size: 1.2em;
+    margin: 10px;
+}
+
+.btn-secondary {
+    background-color: #c3073f;
     color: #bcc6cc;
 }
 
-#event-date {
+.btn-secondary:hover {
+    background-color: #950740;
+    color: #bcc6cc;
+}
+
+.btn-light {
+    background-color: #feda6a;
+    border: #bcc6cc;
+
+}
+
+.btn-light:hover {
+    background-color: #fec822;
+    border: #bcc6cc;
+}
+
+#event-date, #event-name {
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
