@@ -15,11 +15,13 @@ var database = firebase.database();
 /////////////////////////////////
 
 var currentUser = "";
+var currentEmail = "";
 // //Handle Account Status
 (function initApp() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             currentUser = user.uid;
+            currentEmail = user.email;
         } else {
             // User is signed out.
             // ...
@@ -44,6 +46,7 @@ $(document).on("click", "#event-submit", function (event) {
     var guests = $("#inviteeEmail").val().trim();
 
     var guestArray = guests.split(",");
+    guestArray.push(currentEmail);
     getData(eventDate, eventName, guestArray);
     updateUsers(guestArray);
     window.location = "event.html";
