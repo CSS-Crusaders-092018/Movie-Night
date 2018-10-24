@@ -133,7 +133,7 @@ function pageLoad() {
         $("#saved-movies").append(newItem);
         
         var blerg = (emailReminderArray.length * 2) - i;
-        $("#suggestion-list").html("<h2>Suggested Movies - Vote 2 Up and 2 Down</h2><h5>(Note: There are still " + blerg + " movies that need to be suggested.)")
+        $("#suggestion-list").html("<h3>Suggested Movies - Vote 2 Up and 2 Down</h3><h5>(Note: There are still " + blerg + " movies that need to be suggested.)")
     }
 
     //Adding the Winner
