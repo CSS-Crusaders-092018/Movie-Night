@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/assets/images/film-favicon.ico">
+    <link rel="icon" href="../Movie-Night/assets/images/film-favicon.ico">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <title>Movie Night</title>
@@ -97,16 +97,17 @@
                         <h2>Sign In</h2><br>
                         <form class="form-horizontal">
                             <div class="form-group">
+                                <div id="login"></div>
                                 <label class="control-label col-sm-3" for="signUpEmail">Email address</label>
                                 <div class="col-sm-6">
                                     <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                                        placeholder="Enter your email">
+                                        placeholder="Enter your email" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3" for="inputPassword">Password</label>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                                    <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -154,7 +155,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="container">
+    <footer>
         <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason
             Moore, Joyce Nguyen, Isaac Bayon</p>
     </footer>

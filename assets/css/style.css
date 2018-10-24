@@ -8,8 +8,8 @@ body {
     background: #F5F5F5;
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 100px;
-    margin-left: 45px;
-    margin-right: 45px;
+    /*margin-left: 45px;*/
+    /*margin-right: 45px;*/
     
   }
   .starter-template {
@@ -50,10 +50,10 @@ nav {
     border: solid 5px grey
 } */
 
-.col-md-2
+/*.col-md-2
 {
     border: solid 5px black
-}
+}*/
 
 
 #rotating-item-wrapper {

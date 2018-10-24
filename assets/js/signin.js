@@ -1,5 +1,4 @@
-$(document).ready(function () {
-
+$(document).ready(function() {
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyB3ognBnBLe-vgaHhsZV7ksufHgzg21VFs",
@@ -15,7 +14,7 @@ $(document).ready(function () {
 
   //Handle Account Status
   (function initApp() {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         //User is signed in.
         var displayName = user.displayName;
@@ -35,93 +34,104 @@ $(document).ready(function () {
     });
   })();
 
-  $('#signin').on('click', function (event) {
+  $("#signin").on("click", function(event) {
     event.preventDefault();
-    console.log("clicked signin")
-    var email = $('#email').val();
-    var password = $('#password').val();
+    console.log("clicked signin");
+    var email = $("#email").val();
+    var password = $("#password").val();
 
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(function (param) {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(function(param) {
         console.log(param);
         console.log("success");
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
-        alert("Sorry, invalid login");
+        $("#login").prepend("<p style='color:#c3073f'> The email or password entered is invalid.</p><br>");
+          setTimeout(function() {
+            $("#login").empty("");
+          }, 3000);
         // ...
       });
   });
 
-  $("#signup").on("click", function (event) {
-    event.preventDefault();
-    console.log("clicked sign up");
-    var email = $("#newEmail").val();
-    var password = $("#newPassword").val();
+  //Sign Up -- to use in version 2.0
+  // $("#signup").on("click", function (event) {
+  //   event.preventDefault();
+  //   console.log("clicked sign up");
+  //   var email = $("#newEmail").val();
+  //   var password = $("#newPassword").val();
 
-    // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-    //   // Handle Errors here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   console.log(errorCode)
-    //   console.log(errorMessage);
-    //   alert(error.message);
-    //   // ...
-    // });
-    // writeUserData(user);
+  //   // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+  //   //   // Handle Errors here.
+  //   //   var errorCode = error.code;
+  //   //   var errorMessage = error.message;
+  //   //   console.log(errorCode)
+  //   //   console.log(errorMessage);
+  //   //   alert(error.message);
+  //   //   // ...
+  //   // });
+  //   // writeUserData(user);
 
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
-      var user = firebase.auth().currentUser;
-      writeUserData(user); // Optional
-    }, function (error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-        console.log(errorCode)
-        console.log(errorMessage);
-    });
-  });
+  //   firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
+  //     var user = firebase.auth().currentUser;
+  //     writeUserData(user); // Optional
+  //   }, function (error) {
+  //     // Handle Errors here.
+  //     var errorCode = error.code;
+  //     var errorMessage = error.message;
+  //       console.log(errorCode)
+  //       console.log(errorMessage);
+  //   });
+  // });
 
   function writeUserData(user) {
     // Get the uid and display name of the newly created user.
     var uid = user.uid;
 
-    database.ref('users/' + uid).set({
+    database.ref("users/" + uid).set({
       email: user.email,
       events: [0]
     });
+  }
 
-  };
-
-  $("#forgotPassword").on("click", function () {
+  $("#forgotPassword").on("click", function() {
     var auth = firebase.auth();
-    var email = $('#email').val();
+    var email = $("#email").val();
 
-    auth.sendPasswordResetEmail(email).then(function () {
-      console.log("email sent");
-      // Email sent.
-    }).catch(function (error) {
-      console.log(error);
-      // An error happened.
-    });
-
+    auth
+      .sendPasswordResetEmail(email)
+      .then(function() {
+        console.log("email sent");
+        $("#login").prepend(
+          "<p style='color:#c3073f'> Please check your email for a link to reset your password.</p><br>"
+        );
+        // Email sent.
+      })
+      .catch(function(error) {
+        console.log(error);
+        // An error happened.
+      });
   });
-
 });
 
-$("#logout").on("click", function (event) {
+$("#logout").on("click", function(event) {
   event.preventDefault();
-  console.log("kbye")
-  firebase.auth().signOut().then(function () {
-    // Sign-out successful.
-    window.location = "index.html";
-  }, function (error) {
-    // An error happened.
-  });
-})
+  console.log("kbye");
+  firebase
+    .auth()
+    .signOut()
+    .then(
+      function() {
+        // Sign-out successful.
+        window.location = "index.html";
+      },
+      function(error) {
+        // An error happened.
+      }
+    );
+});
