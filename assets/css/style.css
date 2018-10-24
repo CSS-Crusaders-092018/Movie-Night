@@ -18,10 +18,14 @@ body {
   }
 
 
-
+/* unnecessary
 nav {
  float: right;
  
+}*/
+
+.nav {
+
 }
 
 .jumbotron {
@@ -101,11 +105,9 @@ p
 }
 
 .upvote:hover, .downvote:hover {
-    color: yellow;
+    color: gold;
 }
     
-
-
 .poster-img {
     height: 300px;
 }
@@ -122,4 +124,47 @@ p
 
 .btn-primary:hover {
     background-color: #9fadb6;
+    border: #bcc6cc;
+}
+
+.tab-button {
+    font-family: 'Saira', sans-serif;
+    margin-right: 5px;
+}
+
+#reminders {
+    font-family: 'Saira', sans-serif;
+    font-size: 1.2em;
+    margin: 10px;
+}
+
+.btn-secondary {
+    background-color: #c3073f;
+    color: #bcc6cc;
+}
+
+.btn-secondary:hover {
+    background-color: #950740;
+    color: #bcc6cc;
+}
+
+.btn-light {
+    background-color: #feda6a;
+    border: #bcc6cc;
+
+}
+
+.btn-light:hover {
+    background-color: #fec822;
+    border: #bcc6cc;
+}
+
+#event-date, #event-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#winner-display {
+    color: #008000;
 }
