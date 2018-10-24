@@ -137,6 +137,12 @@ p
     color: #bcc6cc;
 }
 
+#event-date {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
 #winner-display {
     color: #008000;
 }
