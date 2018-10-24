@@ -65,8 +65,8 @@ function setThisEvent(eventItem) {
     var tempEventArray = [];
     $.each(eventItem, function (key, value) {
         tempEventArray.push(value);
-     });
-     eventKey = tempEventArray[1];
+    });
+    eventKey = tempEventArray[1];
 }
 
 function setAllEvents(eventObject) {
@@ -82,7 +82,7 @@ function eventTabLoad(list) {
     });
 
     for (var i = 1; i < eventArray.length; i++) {
-        var newTab = $("<button>").addClass("tab-button").attr("data-tab", eventArray[i]).text("Event " + i);
+        var newTab = $("<button>").addClass("tab-button btn btn-light").attr("data-tab", eventArray[i]).text("Event " + i);
         $("#tab-display").append(newTab);
     } //end For
 }
@@ -94,14 +94,14 @@ function pageLoad() {
     $("#email-display").hide();
     $("#event-name").text(thisEvent.eventName);
     $("#event-date").text(thisEvent.eventDate);
-    
+
     //Adding the email reminders
     emailReminderArray = [];
     for (var i = 0; i < thisEvent.guests.length; i++) {
         var whichEmail = thisEvent.guests[i].name;
         emailReminderArray.push(whichEmail);
         var newEmail = $("<p>").addClass("email-item").attr("data-email", whichEmail).text(whichEmail);
-        
+
         // var newButton = $("<button>").addClass("reminder-button btn btn-primary").attr("data-email", whichEmail).text("Reminder");
         var newLink = $("<a>").attr("href", "mailto:" + whichEmail + "?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first.").addClass("reminder-link")
         newLink.text("Reminder");
@@ -127,25 +127,46 @@ function pageLoad() {
         newDropDown.append(newPoster);
         newDropDown.append("<p>" + thisEvent.suggestionList[i].year);
         newDropDown.append("<p>" + thisEvent.suggestionList[i].plot);
+        newDropDown.append("<p>Metascore: " + thisEvent.suggestionList[i].metascore);
 
         newItem.append(newTitleCard, newDropDown);
         newDropDown.hide();
         $("#saved-movies").append(newItem);
-        
+
         var blerg = (emailReminderArray.length * 2) - i;
         $("#suggestion-list").html("<h2>Suggested Movies - Vote 2 Up and 2 Down</h2><h5>(Note: There are still " + blerg + " movies that need to be suggested.)")
     }
 
     //Adding the Winner
-    $("#winner-display").empty();
+    
     var winnerWinner = 0;
+    var winnerGbId = "";
     $.each(thisEvent.suggestionList, function (key, value) {
         if (winnerWinner < value.votes) {
+            $("#winner-display").empty();
             winnerWinner = value.votes;
-            $("#winner-display").text(value.title);
+            $("#winner-display").append("<h3>" + value.title + "</h3>");
+            winnerGbId = value.guideboxId;
         }
     });
+    console.log(thisEvent)
+    console.log(winnerGbId);
+    var queryURL = "https://api-public.guidebox.com/v2/movies/" + winnerGbId + "?api_key=784a0a8429f1789c7473e19007cce274f76df272&";
 
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        $.each(response.subscription_web_sources, function (key, value) {
+            $("#winner-display").append("<br>");
+            $("#winner-display").append("<a href=" + value.link + ">" + value.display_name + "</a>");
+        });
+        $.each(response.purchase_web_sources, function (key, value) {
+            $("#winner-display").append("<br>");
+            $("#winner-display").append("<a href=" + value.link + ">" + value.display_name + "</a>");
+        });
+
+    }) //end AJAX 
 } //End pageLoad()
 
 // Invite Friends - <a href="mailto:emadamczyk@hotmail.com?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first."></a>
@@ -160,21 +181,22 @@ $("#sendInvite").on("click", function () {
 /////////////////////////////////////
 
 //grab index of current user
-function currentUserAsGuest(guest){
+function currentUserAsGuest(guest) {
     return guest.name == currentUser;
 }
 
 //Get Movie Data
 function getMovieData(movie) {
     var queryURL = "https://api-public.guidebox.com/v2/search?api_key=784a0a8429f1789c7473e19007cce274f76df272&type=movie&field=title&query=" + movie;
-    
+
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        console.log(response.results)
         $("#movie-display").append("<h3>Search results: </h3>");
         for (var i = 0; i < response.results.length; i++) {
-            var newMovie = $("<p>").addClass("search-result").attr("data-id", response.results[i].imdb).attr("data-title", response.results[i].title).text(response.results[i].title + ", " + response.results[i].release_year);
+            var newMovie = $("<p>").addClass("search-result").attr("data-id", response.results[i].imdb).attr("data-title", response.results[i].title).attr("data-guideboxId", response.results[i].id).text(response.results[i].title + ", " + response.results[i].release_year);
             $("#movie-display").append(newMovie);
         }
     }) //end AJAX 
@@ -191,6 +213,7 @@ $("#suggestion-submit").on("click", function (event) {
 $(document).on("click", ".search-result", function () {
     var newMovie = $(this).attr("data-title");
     var newId = $(this).attr("data-id");
+    var newGuidebox = $(this).attr("data-guideboxId")
     var newQuery = "https://www.omdbapi.com/?apikey=168f295&i=" + newId + "&type&y=&plot=short"
     $.ajax({
         url: newQuery,
@@ -203,7 +226,8 @@ $(document).on("click", ".search-result", function () {
                 year: response.Year,
                 plot: response.Plot,
                 metascore: response.Metascore,
-                votes: 0
+                votes: 0,
+                guideboxId: newGuidebox
             }
             thisEvent.guests.find(currentUserAsGuest).suggestions.push(newMovie);
             thisEvent.suggestionList.push(newSuggestion);
@@ -282,11 +306,11 @@ $("#logout").on("click", function (event) {
     event.preventDefault();
     console.log("kbye")
     firebase.auth().signOut().then(function () {
-      // Sign-out successful.
-      window.location = "index.html";
+        // Sign-out successful.
+        window.location = "index.html";
     }, function (error) {
-      // An error happened.
+        // An error happened.
     });
-  })
+})
 
 // });
