@@ -1,7 +1,13 @@
+html {
+    position: relative;
+    min-height: 100%
+}
+
 body {
     /*padding-top: 3.5rem;*/
     background: #F5F5F5;
     font-family: 'Montserrat', sans-serif;
+    margin-bottom: 100px;
     margin-left: 45px;
     margin-right: 45px;
     
@@ -64,10 +70,14 @@ nav {
 
 footer {
     background-color: #9fadb6;
+    bottom: 0;
     font-family: 'Saira', sans-serif;
     font-size: .7em;
+    height: 90px;
     margin-top: 30px;
     padding-top: 30px;
+    position: absolute;
+    overflow: hidden;
     text-align: center;
 }
 
