@@ -18,11 +18,13 @@ body {
   }
 
 
-
+/* unnecessary
 nav {
  float: right;
  
-}
+}*/
+
+
 
 .jumbotron {
     background-image: url("../images/maxresdefault.jpg");
@@ -122,4 +124,8 @@ p
 
 .btn-primary:hover {
     background-color: #9fadb6;
+}
+
+#winner-display {
+    color: #008000;
 }
