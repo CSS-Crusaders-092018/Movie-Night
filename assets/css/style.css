@@ -1,19 +1,15 @@
-html {
-    position: relative;
-    min-height: 100%;
-}
-
 body {
     /*padding-top: 3.5rem;*/
     background: #F5F5F5;
     font-family: 'Montserrat', sans-serif;
-    margin: 0 45px 80px 45px;  
+    margin-left: 45px;
+    margin-right: 45px;
+    
   }
-
- /* .starter-template {
+  .starter-template {
     padding: 3rem 1.5rem;
     text-align: center;
-  }*/
+  }
 
   /*.col-md-4, 
   .col-md-3, 
@@ -33,11 +29,7 @@ nav {
 .nav {
 
 }
-
-label {
-    font-weight: bold;
-}
-
+ 
 .jumbotron {
     background-image: url("../images/maxresdefault.jpg");
     background-position: center;
@@ -81,10 +73,6 @@ footer {
     margin-top: 30px;
     padding-top: 30px;
     text-align: center;
-    position: absolute;
-    bottom: 0;
-    height: 80px;
-    overflow: hidden;
 }
 
 img {
@@ -178,6 +166,10 @@ p
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
+}
+
+ul {
+    margin-right: 80px;
 }
 
 #winner-display {
