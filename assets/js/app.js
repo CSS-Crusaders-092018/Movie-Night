@@ -149,14 +149,16 @@ function pageLoad() {
             winnerGbId = value.guideboxId;
         }
     });
-    console.log(thisEvent)
-    console.log(winnerGbId);
+
     var queryURL = "https://api-public.guidebox.com/v2/movies/" + winnerGbId + "?api_key=784a0a8429f1789c7473e19007cce274f76df272&";
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        if (response.in_theaters == true) {
+            $("#winner-display").append("In Theaters Now");
+        } 
         $.each(response.subscription_web_sources, function (key, value) {
             $("#winner-display").append("<br>");
             $("#winner-display").append("<a href=" + value.link + ">" + value.display_name + "</a>");
@@ -165,16 +167,15 @@ function pageLoad() {
             $("#winner-display").append("<br>");
             $("#winner-display").append("<a href=" + value.link + ">" + value.display_name + "</a>");
         });
-
     }) //end AJAX 
 } //End pageLoad()
 
 // Invite Friends - <a href="mailto:emadamczyk@hotmail.com?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first."></a>
 // pull list of guest emails invited and use for loop to iterate and mailto
-$("#sendInvite").on("click", function () {
-    console.log("invite who?")
+// $("#sendInvite").on("click", function () {
+//     console.log("invite who?")
 
-})
+// })
 
 ///////////////////////////////////////
 //  API CALLS AND APP FUNCTIONALITY //
@@ -193,7 +194,6 @@ function getMovieData(movie) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response.results)
         $("#movie-display").append("<h3>Search results: </h3>");
         for (var i = 0; i < response.results.length; i++) {
             var newMovie = $("<p>").addClass("search-result").attr("data-id", response.results[i].imdb).attr("data-title", response.results[i].title).attr("data-guideboxId", response.results[i].id).text(response.results[i].title + ", " + response.results[i].release_year);
