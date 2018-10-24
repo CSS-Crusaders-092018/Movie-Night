@@ -156,6 +156,9 @@ function pageLoad() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        if (response.in_theaters == true) {
+            $("#winner-display").append("In Theaters Now");
+        } 
         $.each(response.subscription_web_sources, function (key, value) {
             $("#winner-display").append("<br>");
             $("#winner-display").append("<a href=" + value.link + ">" + value.display_name + "</a>");
@@ -164,7 +167,6 @@ function pageLoad() {
             $("#winner-display").append("<br>");
             $("#winner-display").append("<a href=" + value.link + ">" + value.display_name + "</a>");
         });
-
     }) //end AJAX 
 } //End pageLoad()
 
