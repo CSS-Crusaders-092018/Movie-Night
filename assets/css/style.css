@@ -79,6 +79,7 @@ footer {
     position: absolute;
     overflow: hidden;
     text-align: center;
+    right: 140px;
 }
 
 img {
@@ -98,7 +99,6 @@ p
 #active {
     background-color: aqua;
 }
-
 
 .list-title {
     display: inline;
@@ -177,6 +177,7 @@ p
 ul {
     margin-right: 80px;
 }
+
 
 #winner-display {
     color: #008000;
