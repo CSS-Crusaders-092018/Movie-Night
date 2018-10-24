@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../Movie-Night/assets/images/film-favicon.ico">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Movie Night - Events</title>
 
     <!-- Bootstrap core CSS -->
@@ -17,7 +17,7 @@
         crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Saira" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Saira" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -79,11 +79,11 @@
                             </div>
                             <!-- populates from firebase -->
                         </div>
-                        <div class="col-md-4">
-                            <a href="mailto:emadamczyk@hotmail.com?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first."><button
-                                    type="submit" class="btn btn-primary" id="sendInvite">Invite Friends</button></a>
-
-
+                        <div class="col-md-4 email-stuff">
+                            <!-- <a href="mailto:emadamczyk@hotmail.com?subject=You're Invited to a Movie Night&body=Hi, Please come to the next movie night. Be sure to add suggestions and vote first."> -->
+                                    <button class="btn btn-primary" id="reminders" data-shown="false">Remind Friends</button>
+                                    <!-- </a> -->
+                            <div id="email-display"></div>
                         </div>
                         <br>
                     </div>
@@ -129,7 +129,7 @@
                         <!-- the table headings start here -->
                         <thead>
                             <tr>
-                                <th>
+                                <th id = "suggestion-list">
                                     <h2>Suggested Movies - Vote on your favorite 2</h2>
                                 </th>
                             </tr>
@@ -160,22 +160,23 @@
     </main>
     <!-- Footer -->
     <footer class="container">
-        <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason Moore, Joyce Nguyen, Isaac Bayon</p>
+        <p>&copy; 2018. All Rights Reserved. <br> CSS Crusaders - Bootcamp Project 1 <br> Elizabeth Adamczyk, Jason
+            Moore, Joyce Nguyen, Isaac Bayon</p>
     </footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
-    <script src="./assets/js/app.js"></script>
+    <script src="../Movie-Night/assets/js/app.js"></script>
 
 
 </body>
