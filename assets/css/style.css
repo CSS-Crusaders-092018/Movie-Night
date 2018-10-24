@@ -29,6 +29,7 @@ nav {
  
 }*/
 
+
 .nav {
 
 }
@@ -118,7 +119,7 @@ p
 }
 
 .upvote:hover, .downvote:hover {
-    color: gold;
+    background: gold;
 }
     
 .poster-img {
