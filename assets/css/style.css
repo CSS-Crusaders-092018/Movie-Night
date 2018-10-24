@@ -24,7 +24,9 @@ nav {
  
 }*/
 
+.nav {
 
+}
 
 .jumbotron {
     background-image: url("../images/maxresdefault.jpg");
@@ -103,11 +105,9 @@ p
 }
 
 .upvote:hover, .downvote:hover {
-    color: yellow;
+    color: gold;
 }
     
-
-
 .poster-img {
     height: 300px;
 }
@@ -124,6 +124,17 @@ p
 
 .btn-primary:hover {
     background-color: #9fadb6;
+    border: #bcc6cc;
+}
+
+.btn-secondary {
+    background-color: #c3073f;
+    color: #bcc6cc
+}
+
+.btn-secondary:hover {
+    background-color: #6f2232;
+    color: #bcc6cc;
 }
 
 #winner-display {
