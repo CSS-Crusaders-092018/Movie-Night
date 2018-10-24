@@ -29,6 +29,10 @@ nav {
 
 }
 
+label {
+    font-weight: bold;
+}
+
 .jumbotron {
     background-image: url("../images/maxresdefault.jpg");
     background-position: center;
